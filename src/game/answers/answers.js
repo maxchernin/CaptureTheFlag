@@ -7,7 +7,7 @@ import Answer from './answer/answer';
 class Answers extends Component {
 	render() {
 		return (
-			<div className="Answers">
+			<div className="Answers col-md-8">
 				Answers Component
 				<Answer/>
 			</div>
