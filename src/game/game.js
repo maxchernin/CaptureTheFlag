@@ -5,2521 +5,1281 @@ import React, { Component } from 'react';
 import Flag from './flag/flag';
 import Answers from './answers/answers';
 import Score from './score/score';
+import _ from 'lodash';
 
 class Game extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
-
 		this.state = {
-			currectFlag: 'load flags and select flag',
 			flags: [
 				{
 					"name": "Afghanistan",
 					"alphaTwo": "AF",
-					"id": "004"
-				},
-				{
-					"name": "Åland Islands",
-					"alphaTwo": "AX",
-					"id": "248"
+					"id": "004",
+					"city": "Kabul"
 				},
 				{
 					"name": "Albania",
 					"alphaTwo": "AL",
-					"id": "008"
+					"id": "008",
+					"city": "Tirana"
 				},
 				{
 					"name": "Algeria",
 					"alphaTwo": "DZ",
-					"id": "012"
+					"id": "012",
+					"city": "Alger"
 				},
 				{
 					"name": "American Samoa",
 					"alphaTwo": "AS",
-					"id": "016"
+					"id": "016",
+					"city": "Fagatogo"
 				},
 				{
 					"name": "Andorra",
 					"alphaTwo": "AD",
-					"id": "020"
+					"id": "020",
+					"city": "Andorra la Vella"
 				},
 				{
 					"name": "Angola",
 					"alphaTwo": "AO",
-					"id": "024"
+					"id": "024",
+					"city": "Luanda"
 				},
 				{
 					"name": "Anguilla",
 					"alphaTwo": "AI",
-					"id": "660"
+					"id": "660",
+					"city": "The Valley"
 				},
 				{
 					"name": "Antarctica",
 					"alphaTwo": "AQ",
-					"id": "010"
+					"id": "010",
+					"city": null
 				},
 				{
 					"name": "Antigua and Barbuda",
 					"alphaTwo": "AG",
-					"id": "028"
+					"id": "028",
+					"city": "Saint John's"
 				},
 				{
 					"name": "Argentina",
 					"alphaTwo": "AR",
-					"id": "032"
+					"id": "032",
+					"city": "Buenos Aires"
 				},
 				{
 					"name": "Armenia",
 					"alphaTwo": "AM",
-					"id": "051"
+					"id": "051",
+					"city": "Yerevan"
 				},
 				{
 					"name": "Aruba",
 					"alphaTwo": "AW",
-					"id": "533"
+					"id": "533",
+					"city": "Oranjestad"
 				},
 				{
 					"name": "Australia",
 					"alphaTwo": "AU",
-					"id": "036"
+					"id": "036",
+					"city": "Canberra"
 				},
 				{
 					"name": "Austria",
 					"alphaTwo": "AT",
-					"id": "040"
+					"id": "040",
+					"city": "Wien"
 				},
 				{
 					"name": "Azerbaijan",
 					"alphaTwo": "AZ",
-					"id": "031"
+					"id": "031",
+					"city": "Baku"
 				},
 				{
 					"name": "Bahamas",
 					"alphaTwo": "BS",
-					"id": "044"
+					"id": "044",
+					"city": "Nassau"
 				},
 				{
 					"name": "Bahrain",
 					"alphaTwo": "BH",
-					"id": "048"
+					"id": "048",
+					"city": "al-Manama"
 				},
 				{
 					"name": "Bangladesh",
 					"alphaTwo": "BD",
-					"id": "050"
+					"id": "050",
+					"city": "Dhaka"
 				},
 				{
 					"name": "Barbados",
 					"alphaTwo": "BB",
-					"id": "052"
+					"id": "052",
+					"city": "Bridgetown"
 				},
 				{
 					"name": "Belarus",
 					"alphaTwo": "BY",
-					"id": "112"
+					"id": "112",
+					"city": "Minsk"
 				},
 				{
 					"name": "Belgium",
 					"alphaTwo": "BE",
-					"id": "056"
+					"id": "056",
+					"city": "Bruxelles [Brussel]"
 				},
 				{
 					"name": "Belize",
 					"alphaTwo": "BZ",
-					"id": "084"
+					"id": "084",
+					"city": "Belmopan"
 				},
 				{
 					"name": "Benin",
 					"alphaTwo": "BJ",
-					"id": "204"
+					"id": "204",
+					"city": "Porto-Novo"
 				},
 				{
 					"name": "Bermuda",
 					"alphaTwo": "BM",
-					"id": "060"
+					"id": "060",
+					"city": "Hamilton"
 				},
 				{
 					"name": "Bhutan",
 					"alphaTwo": "BT",
-					"id": "064"
-				},
-				{
-					"name": "Bolivia (Plurinational State of)",
-					"alphaTwo": "BO",
-					"id": "068"
-				},
-				{
-					"name": "Bonaire, Sint Eustatius and Saba",
-					"alphaTwo": "BQ",
-					"id": "535"
+					"id": "064",
+					"city": "Thimphu"
 				},
 				{
 					"name": "Bosnia and Herzegovina",
 					"alphaTwo": "BA",
-					"id": "070"
+					"id": "070",
+					"city": "Sarajevo"
 				},
 				{
 					"name": "Botswana",
 					"alphaTwo": "BW",
-					"id": "072"
+					"id": "072",
+					"city": "Gaborone"
 				},
 				{
 					"name": "Bouvet Island",
 					"alphaTwo": "BV",
-					"id": "074"
+					"id": "074",
+					"city": null
 				},
 				{
 					"name": "Brazil",
 					"alphaTwo": "BR",
-					"id": "076"
+					"id": "076",
+					"city": "Bras"
 				},
 				{
 					"name": "British Indian Ocean Territory",
 					"alphaTwo": "IO",
-					"id": "086"
-				},
-				{
-					"name": "Brunei Darussalam",
-					"alphaTwo": "BN",
-					"id": "096"
+					"id": "086",
+					"city": null
 				},
 				{
 					"name": "Bulgaria",
 					"alphaTwo": "BG",
-					"id": "100"
+					"id": "100",
+					"city": "Sofia"
 				},
 				{
 					"name": "Burkina Faso",
 					"alphaTwo": "BF",
-					"id": "854"
+					"id": "854",
+					"city": "Ouagadougou"
 				},
 				{
 					"name": "Burundi",
 					"alphaTwo": "BI",
-					"id": "108"
+					"id": "108",
+					"city": "Bujumbura"
 				},
 				{
 					"name": "Cambodia",
 					"alphaTwo": "KH",
-					"id": "116"
+					"id": "116",
+					"city": "Phnom Penh"
 				},
 				{
 					"name": "Cameroon",
 					"alphaTwo": "CM",
-					"id": "120"
+					"id": "120",
+					"city": "Yaound"
 				},
 				{
 					"name": "Canada",
 					"alphaTwo": "CA",
-					"id": "124"
-				},
-				{
-					"name": "Cabo Verde",
-					"alphaTwo": "CV",
-					"id": "132"
+					"id": "124",
+					"city": "Ottawa"
 				},
 				{
 					"name": "Cayman Islands",
 					"alphaTwo": "KY",
-					"id": "136"
+					"id": "136",
+					"city": "George Town"
 				},
 				{
 					"name": "Central African Republic",
 					"alphaTwo": "CF",
-					"id": "140"
+					"id": "140",
+					"city": "Bangui"
 				},
 				{
 					"name": "Chad",
 					"alphaTwo": "TD",
-					"id": "148"
+					"id": "148",
+					"city": "N'Djam"
 				},
 				{
 					"name": "Chile",
 					"alphaTwo": "CL",
-					"id": "152"
+					"id": "152",
+					"city": "Santiago de Chile"
 				},
 				{
 					"name": "China",
 					"alphaTwo": "CN",
-					"id": "156"
+					"id": "156",
+					"city": "Peking"
 				},
 				{
 					"name": "Christmas Island",
 					"alphaTwo": "CX",
-					"id": "162"
+					"id": "162",
+					"city": "Flying Fish Cove"
 				},
 				{
 					"name": "Cocos (Keeling) Islands",
 					"alphaTwo": "CC",
-					"id": "166"
+					"id": "166",
+					"city": "West Island"
 				},
 				{
 					"name": "Colombia",
 					"alphaTwo": "CO",
-					"id": "170"
+					"id": "170",
+					"city": "Santaf"
 				},
 				{
 					"name": "Comoros",
 					"alphaTwo": "KM",
-					"id": "174"
+					"id": "174",
+					"city": "Moroni"
 				},
 				{
 					"name": "Congo",
 					"alphaTwo": "CG",
-					"id": "178"
-				},
-				{
-					"name": "Congo (Democratic Republic of the)",
-					"alphaTwo": "CD",
-					"id": "180"
+					"id": "178",
+					"city": "Brazzaville"
 				},
 				{
 					"name": "Cook Islands",
 					"alphaTwo": "CK",
-					"id": "184"
+					"id": "184",
+					"city": "Avarua"
 				},
 				{
 					"name": "Costa Rica",
 					"alphaTwo": "CR",
-					"id": "188"
-				},
-				{
-					"name": "Côte d'Ivoire",
-					"alphaTwo": "CI",
-					"id": "384"
+					"id": "188",
+					"city": "San Jos"
 				},
 				{
 					"name": "Croatia",
 					"alphaTwo": "HR",
-					"id": "191"
+					"id": "191",
+					"city": "Zagreb"
 				},
 				{
 					"name": "Cuba",
 					"alphaTwo": "CU",
-					"id": "192"
-				},
-				{
-					"name": "Curaçao",
-					"alphaTwo": "CW",
-					"id": "531"
+					"id": "192",
+					"city": "Havana"
 				},
 				{
 					"name": "Cyprus",
 					"alphaTwo": "CY",
-					"id": "196"
+					"id": "196",
+					"city": "Nicosia"
 				},
 				{
 					"name": "Czech Republic",
 					"alphaTwo": "CZ",
-					"id": "203"
+					"id": "203",
+					"city": "Praha"
 				},
 				{
 					"name": "Denmark",
 					"alphaTwo": "DK",
-					"id": "208"
+					"id": "208",
+					"city": "Copenhagen"
 				},
 				{
 					"name": "Djibouti",
 					"alphaTwo": "DJ",
-					"id": "262"
+					"id": "262",
+					"city": "Djibouti"
 				},
 				{
 					"name": "Dominica",
 					"alphaTwo": "DM",
-					"id": "212"
+					"id": "212",
+					"city": "Roseau"
 				},
 				{
 					"name": "Dominican Republic",
 					"alphaTwo": "DO",
-					"id": "214"
+					"id": "214",
+					"city": "Santo Domingo de Guzm"
 				},
 				{
 					"name": "Ecuador",
 					"alphaTwo": "EC",
-					"id": "218"
+					"id": "218",
+					"city": "Quito"
 				},
 				{
 					"name": "Egypt",
 					"alphaTwo": "EG",
-					"id": "818"
+					"id": "818",
+					"city": "Cairo"
 				},
 				{
 					"name": "El Salvador",
 					"alphaTwo": "SV",
-					"id": "222"
+					"id": "222",
+					"city": "San Salvador"
 				},
 				{
 					"name": "Equatorial Guinea",
 					"alphaTwo": "GQ",
-					"id": "226"
+					"id": "226",
+					"city": "Malabo"
 				},
 				{
 					"name": "Eritrea",
 					"alphaTwo": "ER",
-					"id": "232"
+					"id": "232",
+					"city": "Asmara"
 				},
 				{
 					"name": "Estonia",
 					"alphaTwo": "EE",
-					"id": "233"
+					"id": "233",
+					"city": "Tallinn"
 				},
 				{
 					"name": "Ethiopia",
 					"alphaTwo": "ET",
-					"id": "231"
-				},
-				{
-					"name": "Falkland Islands (Malvinas)",
-					"alphaTwo": "FK",
-					"id": "238"
+					"id": "231",
+					"city": "Addis Abeba"
 				},
 				{
 					"name": "Faroe Islands",
 					"alphaTwo": "FO",
-					"id": "234"
-				},
-				{
-					"name": "Fiji",
-					"alphaTwo": "FJ",
-					"id": "242"
+					"id": "234",
+					"city": "Tórshavn"
 				},
 				{
 					"name": "Finland",
 					"alphaTwo": "FI",
-					"id": "246"
+					"id": "246",
+					"city": "Helsinki [Helsingfors]"
 				},
 				{
 					"name": "France",
 					"alphaTwo": "FR",
-					"id": "250"
+					"id": "250",
+					"city": "Paris"
 				},
 				{
 					"name": "French Guiana",
 					"alphaTwo": "GF",
-					"id": "254"
+					"id": "254",
+					"city": "Cayenne"
 				},
 				{
 					"name": "French Polynesia",
 					"alphaTwo": "PF",
-					"id": "258"
-				},
-				{
-					"name": "French Southern Territories",
-					"alphaTwo": "TF",
-					"id": "260"
+					"id": "258",
+					"city": "Papeete"
 				},
 				{
 					"name": "Gabon",
 					"alphaTwo": "GA",
-					"id": "266"
+					"id": "266",
+					"city": "Libreville"
 				},
 				{
 					"name": "Gambia",
 					"alphaTwo": "GM",
-					"id": "270"
+					"id": "270",
+					"city": "Banjul"
 				},
 				{
 					"name": "Georgia",
 					"alphaTwo": "GE",
-					"id": "268"
+					"id": "268",
+					"city": "Tbilisi"
 				},
 				{
 					"name": "Germany",
 					"alphaTwo": "DE",
-					"id": "276"
+					"id": "276",
+					"city": "Berlin"
 				},
 				{
 					"name": "Ghana",
 					"alphaTwo": "GH",
-					"id": "288"
+					"id": "288",
+					"city": "Accra"
 				},
 				{
 					"name": "Gibraltar",
 					"alphaTwo": "GI",
-					"id": "292"
+					"id": "292",
+					"city": "Gibraltar"
 				},
 				{
 					"name": "Greece",
 					"alphaTwo": "GR",
-					"id": "300"
+					"id": "300",
+					"city": "Athenai"
 				},
 				{
 					"name": "Greenland",
 					"alphaTwo": "GL",
-					"id": "304"
+					"id": "304",
+					"city": "Nuuk"
 				},
 				{
 					"name": "Grenada",
 					"alphaTwo": "GD",
-					"id": "308"
+					"id": "308",
+					"city": "Saint George's"
 				},
 				{
 					"name": "Guadeloupe",
 					"alphaTwo": "GP",
-					"id": "312"
+					"id": "312",
+					"city": "Basse-Terre"
 				},
 				{
 					"name": "Guam",
 					"alphaTwo": "GU",
-					"id": "316"
+					"id": "316",
+					"city": "Aga"
 				},
 				{
 					"name": "Guatemala",
 					"alphaTwo": "GT",
-					"id": "320"
-				},
-				{
-					"name": "Guernsey",
-					"alphaTwo": "GG",
-					"id": "831"
+					"id": "320",
+					"city": "Ciudad de Guatemala"
 				},
 				{
 					"name": "Guinea",
 					"alphaTwo": "GN",
-					"id": "324"
+					"id": "324",
+					"city": "Conakry"
 				},
 				{
 					"name": "Guinea-Bissau",
 					"alphaTwo": "GW",
-					"id": "624"
+					"id": "624",
+					"city": "Bissau"
 				},
 				{
 					"name": "Guyana",
 					"alphaTwo": "GY",
-					"id": "328"
+					"id": "328",
+					"city": "Georgetown"
 				},
 				{
 					"name": "Haiti",
 					"alphaTwo": "HT",
-					"id": "332"
+					"id": "332",
+					"city": "Port-au-Prince"
 				},
 				{
 					"name": "Heard Island and McDonald Islands",
 					"alphaTwo": "HM",
-					"id": "334"
-				},
-				{
-					"name": "Holy See",
-					"alphaTwo": "VA",
-					"id": "336"
+					"id": "334",
+					"city": null
 				},
 				{
 					"name": "Honduras",
 					"alphaTwo": "HN",
-					"id": "340"
+					"id": "340",
+					"city": "Tegucigalpa"
 				},
 				{
 					"name": "Hong Kong",
 					"alphaTwo": "HK",
-					"id": "344"
+					"id": "344",
+					"city": "Victoria"
 				},
 				{
 					"name": "Hungary",
 					"alphaTwo": "HU",
-					"id": "348"
+					"id": "348",
+					"city": "Budapest"
 				},
 				{
 					"name": "Iceland",
 					"alphaTwo": "IS",
-					"id": "352"
+					"id": "352",
+					"city": "Reykjav"
 				},
 				{
 					"name": "India",
 					"alphaTwo": "IN",
-					"id": "356"
+					"id": "356",
+					"city": "New Delhi"
 				},
 				{
 					"name": "Indonesia",
 					"alphaTwo": "ID",
-					"id": "360"
-				},
-				{
-					"name": "Iran (Islamic Republic of)",
-					"alphaTwo": "IR",
-					"id": "364"
+					"id": "360",
+					"city": "Jakarta"
 				},
 				{
 					"name": "Iraq",
 					"alphaTwo": "IQ",
-					"id": "368"
+					"id": "368",
+					"city": "Baghdad"
 				},
 				{
 					"name": "Ireland",
 					"alphaTwo": "IE",
-					"id": "372"
-				},
-				{
-					"name": "Isle of Man",
-					"alphaTwo": "IM",
-					"id": "833"
+					"id": "372",
+					"city": "Dublin"
 				},
 				{
 					"name": "Israel",
 					"alphaTwo": "IL",
-					"id": "376"
+					"id": "376",
+					"city": "Jerusalem"
 				},
 				{
 					"name": "Italy",
 					"alphaTwo": "IT",
-					"id": "380"
+					"id": "380",
+					"city": "Roma"
 				},
 				{
 					"name": "Jamaica",
 					"alphaTwo": "JM",
-					"id": "388"
+					"id": "388",
+					"city": "Kingston"
 				},
 				{
 					"name": "Japan",
 					"alphaTwo": "JP",
-					"id": "392"
-				},
-				{
-					"name": "Jersey",
-					"alphaTwo": "JE",
-					"id": "832"
+					"id": "392",
+					"city": "Tokyo"
 				},
 				{
 					"name": "Jordan",
 					"alphaTwo": "JO",
-					"id": "400"
-				},
-				{
-					"name": "Kazakhstan",
-					"alphaTwo": "KZ",
-					"id": "398"
+					"id": "400",
+					"city": "Amman"
 				},
 				{
 					"name": "Kenya",
 					"alphaTwo": "KE",
-					"id": "404"
+					"id": "404",
+					"city": "Nairobi"
 				},
 				{
 					"name": "Kiribati",
 					"alphaTwo": "KI",
-					"id": "296"
-				},
-				{
-					"name": "Korea (Democratic People's Republic of)",
-					"alphaTwo": "KP",
-					"id": "408"
-				},
-				{
-					"name": "Korea (Republic of)",
-					"alphaTwo": "KR",
-					"id": "410"
+					"id": "296",
+					"city": "Bairiki"
 				},
 				{
 					"name": "Kuwait",
 					"alphaTwo": "KW",
-					"id": "414"
+					"id": "414",
+					"city": "Kuwait"
 				},
 				{
 					"name": "Kyrgyzstan",
 					"alphaTwo": "KG",
-					"id": "417"
-				},
-				{
-					"name": "Lao People's Democratic Republic",
-					"alphaTwo": "LA",
-					"id": "418"
+					"id": "417",
+					"city": "Bishkek"
 				},
 				{
 					"name": "Latvia",
 					"alphaTwo": "LV",
-					"id": "428"
+					"id": "428",
+					"city": "Riga"
 				},
 				{
 					"name": "Lebanon",
 					"alphaTwo": "LB",
-					"id": "422"
+					"id": "422",
+					"city": "Beirut"
 				},
 				{
 					"name": "Lesotho",
 					"alphaTwo": "LS",
-					"id": "426"
+					"id": "426",
+					"city": "Maseru"
 				},
 				{
 					"name": "Liberia",
 					"alphaTwo": "LR",
-					"id": "430"
-				},
-				{
-					"name": "Libya",
-					"alphaTwo": "LY",
-					"id": "434"
+					"id": "430",
+					"city": "Monrovia"
 				},
 				{
 					"name": "Liechtenstein",
 					"alphaTwo": "LI",
-					"id": "438"
+					"id": "438",
+					"city": "Vaduz"
 				},
 				{
 					"name": "Lithuania",
 					"alphaTwo": "LT",
-					"id": "440"
+					"id": "440",
+					"city": "Vilnius"
 				},
 				{
 					"name": "Luxembourg",
 					"alphaTwo": "LU",
-					"id": "442"
+					"id": "442",
+					"city": "Luxembourg [Luxemburg/L"
 				},
 				{
 					"name": "Macao",
 					"alphaTwo": "MO",
-					"id": "446"
-				},
-				{
-					"name": "Macedonia (the former Yugoslav Republic of)",
-					"alphaTwo": "MK",
-					"id": "807"
+					"id": "446",
+					"city": "Macao"
 				},
 				{
 					"name": "Madagascar",
 					"alphaTwo": "MG",
-					"id": "450"
+					"id": "450",
+					"city": "Antananarivo"
 				},
 				{
 					"name": "Malawi",
 					"alphaTwo": "MW",
-					"id": "454"
+					"id": "454",
+					"city": "Lilongwe"
 				},
 				{
 					"name": "Malaysia",
 					"alphaTwo": "MY",
-					"id": "458"
+					"id": "458",
+					"city": "Kuala Lumpur"
 				},
 				{
 					"name": "Maldives",
 					"alphaTwo": "MV",
-					"id": "462"
+					"id": "462",
+					"city": "Male"
 				},
 				{
 					"name": "Mali",
 					"alphaTwo": "ML",
-					"id": "466"
+					"id": "466",
+					"city": "Bamako"
 				},
 				{
 					"name": "Malta",
 					"alphaTwo": "MT",
-					"id": "470"
+					"id": "470",
+					"city": "Valletta"
 				},
 				{
 					"name": "Marshall Islands",
 					"alphaTwo": "MH",
-					"id": "584"
+					"id": "584",
+					"city": "Dalap-Uliga-Darrit"
 				},
 				{
 					"name": "Martinique",
 					"alphaTwo": "MQ",
-					"id": "474"
+					"id": "474",
+					"city": "Fort-de-France"
 				},
 				{
 					"name": "Mauritania",
 					"alphaTwo": "MR",
-					"id": "478"
+					"id": "478",
+					"city": "Nouakchott"
 				},
 				{
 					"name": "Mauritius",
 					"alphaTwo": "MU",
-					"id": "480"
+					"id": "480",
+					"city": "Port-Louis"
 				},
 				{
 					"name": "Mayotte",
 					"alphaTwo": "YT",
-					"id": "175"
+					"id": "175",
+					"city": "Mamoutzou"
 				},
 				{
 					"name": "Mexico",
 					"alphaTwo": "MX",
-					"id": "484"
-				},
-				{
-					"name": "Micronesia (Federated States of)",
-					"alphaTwo": "FM",
-					"id": "583"
-				},
-				{
-					"name": "Moldova (Republic of)",
-					"alphaTwo": "MD",
-					"id": "498"
+					"id": "484",
+					"city": "Ciudad de M"
 				},
 				{
 					"name": "Monaco",
 					"alphaTwo": "MC",
-					"id": "492"
+					"id": "492",
+					"city": "Monaco-Ville"
 				},
 				{
 					"name": "Mongolia",
 					"alphaTwo": "MN",
-					"id": "496"
-				},
-				{
-					"name": "Montenegro",
-					"alphaTwo": "ME",
-					"id": "499"
+					"id": "496",
+					"city": "Ulan Bator"
 				},
 				{
 					"name": "Montserrat",
 					"alphaTwo": "MS",
-					"id": "500"
+					"id": "500",
+					"city": "Plymouth"
 				},
 				{
 					"name": "Morocco",
 					"alphaTwo": "MA",
-					"id": "504"
+					"id": "504",
+					"city": "Rabat"
 				},
 				{
 					"name": "Mozambique",
 					"alphaTwo": "MZ",
-					"id": "508"
+					"id": "508",
+					"city": "Maputo"
 				},
 				{
 					"name": "Myanmar",
 					"alphaTwo": "MM",
-					"id": "104"
+					"id": "104",
+					"city": "Rangoon (Yangon)"
 				},
 				{
 					"name": "Namibia",
 					"alphaTwo": "NA",
-					"id": "516"
+					"id": "516",
+					"city": "Windhoek"
 				},
 				{
 					"name": "Nauru",
 					"alphaTwo": "NR",
-					"id": "520"
+					"id": "520",
+					"city": "Yaren"
 				},
 				{
 					"name": "Nepal",
 					"alphaTwo": "NP",
-					"id": "524"
+					"id": "524",
+					"city": "Kathmandu"
 				},
 				{
 					"name": "Netherlands",
 					"alphaTwo": "NL",
-					"id": "528"
+					"id": "528",
+					"city": "Amsterdam"
 				},
 				{
 					"name": "New Caledonia",
 					"alphaTwo": "NC",
-					"id": "540"
+					"id": "540",
+					"city": "Noum"
 				},
 				{
 					"name": "New Zealand",
 					"alphaTwo": "NZ",
-					"id": "554"
+					"id": "554",
+					"city": "Wellington"
 				},
 				{
 					"name": "Nicaragua",
 					"alphaTwo": "NI",
-					"id": "558"
+					"id": "558",
+					"city": "Managua"
 				},
 				{
 					"name": "Niger",
 					"alphaTwo": "NE",
-					"id": "562"
+					"id": "562",
+					"city": "Niamey"
 				},
 				{
 					"name": "Nigeria",
 					"alphaTwo": "NG",
-					"id": "566"
+					"id": "566",
+					"city": "Abuja"
 				},
 				{
 					"name": "Niue",
 					"alphaTwo": "NU",
-					"id": "570"
+					"id": "570",
+					"city": "Alofi"
 				},
 				{
 					"name": "Norfolk Island",
 					"alphaTwo": "NF",
-					"id": "574"
+					"id": "574",
+					"city": "Kingston"
 				},
 				{
 					"name": "Northern Mariana Islands",
 					"alphaTwo": "MP",
-					"id": "580"
+					"id": "580",
+					"city": "Garapan"
 				},
 				{
 					"name": "Norway",
 					"alphaTwo": "NO",
-					"id": "578"
+					"id": "578",
+					"city": "Oslo"
 				},
 				{
 					"name": "Oman",
 					"alphaTwo": "OM",
-					"id": "512"
+					"id": "512",
+					"city": "Masqat"
 				},
 				{
 					"name": "Pakistan",
 					"alphaTwo": "PK",
-					"id": "586"
+					"id": "586",
+					"city": "Islamabad"
 				},
 				{
 					"name": "Palau",
 					"alphaTwo": "PW",
-					"id": "585"
-				},
-				{
-					"name": "Palestine, State of",
-					"alphaTwo": "PS",
-					"id": "275"
+					"id": "585",
+					"city": "Koror"
 				},
 				{
 					"name": "Panama",
 					"alphaTwo": "PA",
-					"id": "591"
+					"id": "591",
+					"city": "Ciudad de Panam"
 				},
 				{
 					"name": "Papua New Guinea",
 					"alphaTwo": "PG",
-					"id": "598"
+					"id": "598",
+					"city": "Port Moresby"
 				},
 				{
 					"name": "Paraguay",
 					"alphaTwo": "PY",
-					"id": "600"
+					"id": "600",
+					"city": "Asunci"
 				},
 				{
 					"name": "Peru",
 					"alphaTwo": "PE",
-					"id": "604"
+					"id": "604",
+					"city": "Lima"
 				},
 				{
 					"name": "Philippines",
 					"alphaTwo": "PH",
-					"id": "608"
+					"id": "608",
+					"city": "Manila"
 				},
 				{
 					"name": "Pitcairn",
 					"alphaTwo": "PN",
-					"id": "612"
+					"id": "612",
+					"city": "Adamstown"
 				},
 				{
 					"name": "Poland",
 					"alphaTwo": "PL",
-					"id": "616"
+					"id": "616",
+					"city": "Warszawa"
 				},
 				{
 					"name": "Portugal",
 					"alphaTwo": "PT",
-					"id": "620"
+					"id": "620",
+					"city": "Lisboa"
 				},
 				{
 					"name": "Puerto Rico",
 					"alphaTwo": "PR",
-					"id": "630"
+					"id": "630",
+					"city": "San Juan"
 				},
 				{
 					"name": "Qatar",
 					"alphaTwo": "QA",
-					"id": "634"
-				},
-				{
-					"name": "Réunion",
-					"alphaTwo": "RE",
-					"id": "638"
+					"id": "634",
+					"city": "Doha"
 				},
 				{
 					"name": "Romania",
 					"alphaTwo": "RO",
-					"id": "642"
+					"id": "642",
+					"city": "Bucuresti"
 				},
 				{
 					"name": "Russian Federation",
 					"alphaTwo": "RU",
-					"id": "643"
+					"id": "643",
+					"city": "Moscow"
 				},
 				{
 					"name": "Rwanda",
 					"alphaTwo": "RW",
-					"id": "646"
-				},
-				{
-					"name": "Saint Barthélemy",
-					"alphaTwo": "BL",
-					"id": "652"
-				},
-				{
-					"name": "Saint Helena, Ascension and Tristan da Cunha",
-					"alphaTwo": "SH",
-					"id": "654"
+					"id": "646",
+					"city": "Kigali"
 				},
 				{
 					"name": "Saint Kitts and Nevis",
 					"alphaTwo": "KN",
-					"id": "659"
+					"id": "659",
+					"city": "Basseterre"
 				},
 				{
 					"name": "Saint Lucia",
 					"alphaTwo": "LC",
-					"id": "662"
-				},
-				{
-					"name": "Saint Martin (French part)",
-					"alphaTwo": "MF",
-					"id": "663"
+					"id": "662",
+					"city": "Castries"
 				},
 				{
 					"name": "Saint Pierre and Miquelon",
 					"alphaTwo": "PM",
-					"id": "666"
+					"id": "666",
+					"city": "Saint-Pierre"
 				},
 				{
 					"name": "Saint Vincent and the Grenadines",
 					"alphaTwo": "VC",
-					"id": "670"
+					"id": "670",
+					"city": "Kingstown"
 				},
 				{
 					"name": "Samoa",
 					"alphaTwo": "WS",
-					"id": "882"
+					"id": "882",
+					"city": "Apia"
 				},
 				{
 					"name": "San Marino",
 					"alphaTwo": "SM",
-					"id": "674"
+					"id": "674",
+					"city": "San Marino"
 				},
 				{
 					"name": "Sao Tome and Principe",
 					"alphaTwo": "ST",
-					"id": "678"
+					"id": "678",
+					"city": "S"
 				},
 				{
 					"name": "Saudi Arabia",
 					"alphaTwo": "SA",
-					"id": "682"
+					"id": "682",
+					"city": "Riyadh"
 				},
 				{
 					"name": "Senegal",
 					"alphaTwo": "SN",
-					"id": "686"
-				},
-				{
-					"name": "Serbia",
-					"alphaTwo": "RS",
-					"id": "688"
+					"id": "686",
+					"city": "Dakar"
 				},
 				{
 					"name": "Seychelles",
 					"alphaTwo": "SC",
-					"id": "690"
+					"id": "690",
+					"city": "Victoria"
 				},
 				{
 					"name": "Sierra Leone",
 					"alphaTwo": "SL",
-					"id": "694"
+					"id": "694",
+					"city": "Freetown"
 				},
 				{
 					"name": "Singapore",
 					"alphaTwo": "SG",
-					"id": "702"
-				},
-				{
-					"name": "Sint Maarten (Dutch part)",
-					"alphaTwo": "SX",
-					"id": "534"
+					"id": "702",
+					"city": "Singapore"
 				},
 				{
 					"name": "Slovakia",
 					"alphaTwo": "SK",
-					"id": "703"
+					"id": "703",
+					"city": "Bratislava"
 				},
 				{
 					"name": "Slovenia",
 					"alphaTwo": "SI",
-					"id": "705"
+					"id": "705",
+					"city": "Ljubljana"
 				},
 				{
 					"name": "Solomon Islands",
 					"alphaTwo": "SB",
-					"id": "090"
+					"id": "090",
+					"city": "Honiara"
 				},
 				{
 					"name": "Somalia",
 					"alphaTwo": "SO",
-					"id": "706"
+					"id": "706",
+					"city": "Mogadishu"
 				},
 				{
 					"name": "South Africa",
 					"alphaTwo": "ZA",
-					"id": "710"
+					"id": "710",
+					"city": "Pretoria"
 				},
 				{
 					"name": "South Georgia and the South Sandwich Islands",
 					"alphaTwo": "GS",
-					"id": "239"
+					"id": "239",
+					"city": null
 				},
 				{
 					"name": "South Sudan",
 					"alphaTwo": "SS",
-					"id": "728"
+					"id": "728",
+					"city": "Juba"
 				},
 				{
 					"name": "Spain",
 					"alphaTwo": "ES",
-					"id": "724"
+					"id": "724",
+					"city": "Madrid"
 				},
 				{
 					"name": "Sri Lanka",
 					"alphaTwo": "LK",
-					"id": "144"
+					"id": "144",
+					"city": "Colombo"
 				},
 				{
 					"name": "Sudan",
 					"alphaTwo": "SD",
-					"id": "729"
+					"id": "729",
+					"city": "Khartum"
 				},
 				{
 					"name": "Suriname",
 					"alphaTwo": "SR",
-					"id": "740"
-				},
-				{
-					"name": "Svalbard and Jan Mayen",
-					"alphaTwo": "SJ",
-					"id": "744"
+					"id": "740",
+					"city": "Paramaribo"
 				},
 				{
 					"name": "Swaziland",
 					"alphaTwo": "SZ",
-					"id": "748"
+					"id": "748",
+					"city": "Mbabane"
 				},
 				{
 					"name": "Sweden",
 					"alphaTwo": "SE",
-					"id": "752"
+					"id": "752",
+					"city": "Stockholm"
 				},
 				{
 					"name": "Switzerland",
 					"alphaTwo": "CH",
-					"id": "756"
-				},
-				{
-					"name": "Syrian Arab Republic",
-					"alphaTwo": "SY",
-					"id": "760"
-				},
-				{
-					"name": "Taiwan, Province of China",
-					"alphaTwo": "TW",
-					"id": "158"
+					"id": "756",
+					"city": "Bern"
 				},
 				{
 					"name": "Tajikistan",
 					"alphaTwo": "TJ",
-					"id": "762"
-				},
-				{
-					"name": "Tanzania, United Republic of",
-					"alphaTwo": "TZ",
-					"id": "834"
+					"id": "762",
+					"city": "Dushanbe"
 				},
 				{
 					"name": "Thailand",
 					"alphaTwo": "TH",
-					"id": "764"
-				},
-				{
-					"name": "Timor-Leste",
-					"alphaTwo": "TL",
-					"id": "626"
+					"id": "764",
+					"city": "Bangkok"
 				},
 				{
 					"name": "Togo",
 					"alphaTwo": "TG",
-					"id": "768"
+					"id": "768",
+					"city": "Lom"
 				},
 				{
 					"name": "Tokelau",
 					"alphaTwo": "TK",
-					"id": "772"
+					"id": "772",
+					"city": "Fakaofo"
 				},
 				{
 					"name": "Tonga",
 					"alphaTwo": "TO",
-					"id": "776"
+					"id": "776",
+					"city": "Nuku'alofa"
 				},
 				{
 					"name": "Trinidad and Tobago",
 					"alphaTwo": "TT",
-					"id": "780"
+					"id": "780",
+					"city": "Port-of-Spain"
 				},
 				{
 					"name": "Tunisia",
 					"alphaTwo": "TN",
-					"id": "788"
+					"id": "788",
+					"city": "Tunis"
 				},
 				{
 					"name": "Turkey",
 					"alphaTwo": "TR",
-					"id": "792"
+					"id": "792",
+					"city": "Ankara"
 				},
 				{
 					"name": "Turkmenistan",
 					"alphaTwo": "TM",
-					"id": "795"
+					"id": "795",
+					"city": "Ashgabat"
 				},
 				{
 					"name": "Turks and Caicos Islands",
 					"alphaTwo": "TC",
-					"id": "796"
+					"id": "796",
+					"city": "Cockburn Town"
 				},
 				{
 					"name": "Tuvalu",
 					"alphaTwo": "TV",
-					"id": "798"
+					"id": "798",
+					"city": "Funafuti"
 				},
 				{
 					"name": "Uganda",
 					"alphaTwo": "UG",
-					"id": "800"
+					"id": "800",
+					"city": "Kampala"
 				},
 				{
 					"name": "Ukraine",
 					"alphaTwo": "UA",
-					"id": "804"
+					"id": "804",
+					"city": "Kyiv"
 				},
 				{
 					"name": "United Arab Emirates",
 					"alphaTwo": "AE",
-					"id": "784"
-				},
-				{
-					"name": "United Kingdom of Great Britain and Northern Ireland",
-					"alphaTwo": "GB",
-					"id": "826"
-				},
-				{
-					"name": "United States of America",
-					"alphaTwo": "US",
-					"id": "840"
+					"id": "784",
+					"city": "Abu Dhabi"
 				},
 				{
 					"name": "United States Minor Outlying Islands",
 					"alphaTwo": "UM",
-					"id": "581"
+					"id": "581",
+					"city": null
 				},
 				{
 					"name": "Uruguay",
 					"alphaTwo": "UY",
-					"id": "858"
+					"id": "858",
+					"city": "Montevideo"
 				},
 				{
 					"name": "Uzbekistan",
 					"alphaTwo": "UZ",
-					"id": "860"
+					"id": "860",
+					"city": "Toskent"
 				},
 				{
 					"name": "Vanuatu",
 					"alphaTwo": "VU",
-					"id": "548"
-				},
-				{
-					"name": "Venezuela (Bolivarian Republic of)",
-					"alphaTwo": "VE",
-					"id": "862"
-				},
-				{
-					"name": "Viet Nam",
-					"alphaTwo": "VN",
-					"id": "704"
-				},
-				{
-					"name": "Virgin Islands (British)",
-					"alphaTwo": "VG",
-					"id": "092"
-				},
-				{
-					"name": "Virgin Islands (U.S.)",
-					"alphaTwo": "VI",
-					"id": "850"
+					"id": "548",
+					"city": "Port-Vila"
 				},
 				{
 					"name": "Wallis and Futuna",
 					"alphaTwo": "WF",
-					"id": "876"
+					"id": "876",
+					"city": "Mata-Utu"
 				},
 				{
 					"name": "Western Sahara",
 					"alphaTwo": "EH",
-					"id": "732"
+					"id": "732",
+					"city": "El-Aai"
 				},
 				{
 					"name": "Yemen",
 					"alphaTwo": "YE",
-					"id": "887"
+					"id": "887",
+					"city": "Sanaa"
 				},
 				{
 					"name": "Zambia",
 					"alphaTwo": "ZM",
-					"id": "894"
+					"id": "894",
+					"city": "Lusaka"
 				},
 				{
 					"name": "Zimbabwe",
 					"alphaTwo": "ZW",
-					"id": "716"
+					"id": "716",
+					"city": "Harare"
 				}
-			]
-		};
-		this.flags = [
-			{
-				"name": "Afghanistan",
-				"alphaTwo": "AF",
-				"id": "004"
-			},
-			{
-				"name": "Åland Islands",
-				"alphaTwo": "AX",
-				"id": "248"
-			},
-			{
-				"name": "Albania",
-				"alphaTwo": "AL",
-				"id": "008"
-			},
-			{
-				"name": "Algeria",
-				"alphaTwo": "DZ",
-				"id": "012"
-			},
-			{
-				"name": "American Samoa",
-				"alphaTwo": "AS",
-				"id": "016"
-			},
-			{
-				"name": "Andorra",
-				"alphaTwo": "AD",
-				"id": "020"
-			},
-			{
-				"name": "Angola",
-				"alphaTwo": "AO",
-				"id": "024"
-			},
-			{
-				"name": "Anguilla",
-				"alphaTwo": "AI",
-				"id": "660"
-			},
-			{
-				"name": "Antarctica",
-				"alphaTwo": "AQ",
-				"id": "010"
-			},
-			{
-				"name": "Antigua and Barbuda",
-				"alphaTwo": "AG",
-				"id": "028"
-			},
-			{
-				"name": "Argentina",
-				"alphaTwo": "AR",
-				"id": "032"
-			},
-			{
-				"name": "Armenia",
-				"alphaTwo": "AM",
-				"id": "051"
-			},
-			{
-				"name": "Aruba",
-				"alphaTwo": "AW",
-				"id": "533"
-			},
-			{
-				"name": "Australia",
-				"alphaTwo": "AU",
-				"id": "036"
-			},
-			{
-				"name": "Austria",
-				"alphaTwo": "AT",
-				"id": "040"
-			},
-			{
-				"name": "Azerbaijan",
-				"alphaTwo": "AZ",
-				"id": "031"
-			},
-			{
-				"name": "Bahamas",
-				"alphaTwo": "BS",
-				"id": "044"
-			},
-			{
-				"name": "Bahrain",
-				"alphaTwo": "BH",
-				"id": "048"
-			},
-			{
-				"name": "Bangladesh",
-				"alphaTwo": "BD",
-				"id": "050"
-			},
-			{
-				"name": "Barbados",
-				"alphaTwo": "BB",
-				"id": "052"
-			},
-			{
-				"name": "Belarus",
-				"alphaTwo": "BY",
-				"id": "112"
-			},
-			{
-				"name": "Belgium",
-				"alphaTwo": "BE",
-				"id": "056"
-			},
-			{
-				"name": "Belize",
-				"alphaTwo": "BZ",
-				"id": "084"
-			},
-			{
-				"name": "Benin",
-				"alphaTwo": "BJ",
-				"id": "204"
-			},
-			{
-				"name": "Bermuda",
-				"alphaTwo": "BM",
-				"id": "060"
-			},
-			{
-				"name": "Bhutan",
-				"alphaTwo": "BT",
-				"id": "064"
-			},
-			{
-				"name": "Bolivia (Plurinational State of)",
-				"alphaTwo": "BO",
-				"id": "068"
-			},
-			{
-				"name": "Bonaire, Sint Eustatius and Saba",
-				"alphaTwo": "BQ",
-				"id": "535"
-			},
-			{
-				"name": "Bosnia and Herzegovina",
-				"alphaTwo": "BA",
-				"id": "070"
-			},
-			{
-				"name": "Botswana",
-				"alphaTwo": "BW",
-				"id": "072"
-			},
-			{
-				"name": "Bouvet Island",
-				"alphaTwo": "BV",
-				"id": "074"
-			},
-			{
-				"name": "Brazil",
-				"alphaTwo": "BR",
-				"id": "076"
-			},
-			{
-				"name": "British Indian Ocean Territory",
-				"alphaTwo": "IO",
-				"id": "086"
-			},
-			{
-				"name": "Brunei Darussalam",
-				"alphaTwo": "BN",
-				"id": "096"
-			},
-			{
-				"name": "Bulgaria",
-				"alphaTwo": "BG",
-				"id": "100"
-			},
-			{
-				"name": "Burkina Faso",
-				"alphaTwo": "BF",
-				"id": "854"
-			},
-			{
-				"name": "Burundi",
-				"alphaTwo": "BI",
-				"id": "108"
-			},
-			{
-				"name": "Cambodia",
-				"alphaTwo": "KH",
-				"id": "116"
-			},
-			{
-				"name": "Cameroon",
-				"alphaTwo": "CM",
-				"id": "120"
-			},
-			{
-				"name": "Canada",
-				"alphaTwo": "CA",
-				"id": "124"
-			},
-			{
-				"name": "Cabo Verde",
-				"alphaTwo": "CV",
-				"id": "132"
-			},
-			{
-				"name": "Cayman Islands",
-				"alphaTwo": "KY",
-				"id": "136"
-			},
-			{
-				"name": "Central African Republic",
-				"alphaTwo": "CF",
-				"id": "140"
-			},
-			{
-				"name": "Chad",
-				"alphaTwo": "TD",
-				"id": "148"
-			},
-			{
-				"name": "Chile",
-				"alphaTwo": "CL",
-				"id": "152"
-			},
-			{
-				"name": "China",
-				"alphaTwo": "CN",
-				"id": "156"
-			},
-			{
-				"name": "Christmas Island",
-				"alphaTwo": "CX",
-				"id": "162"
-			},
-			{
-				"name": "Cocos (Keeling) Islands",
-				"alphaTwo": "CC",
-				"id": "166"
-			},
-			{
-				"name": "Colombia",
-				"alphaTwo": "CO",
-				"id": "170"
-			},
-			{
-				"name": "Comoros",
-				"alphaTwo": "KM",
-				"id": "174"
-			},
-			{
-				"name": "Congo",
-				"alphaTwo": "CG",
-				"id": "178"
-			},
-			{
-				"name": "Congo (Democratic Republic of the)",
-				"alphaTwo": "CD",
-				"id": "180"
-			},
-			{
-				"name": "Cook Islands",
-				"alphaTwo": "CK",
-				"id": "184"
-			},
-			{
-				"name": "Costa Rica",
-				"alphaTwo": "CR",
-				"id": "188"
-			},
-			{
-				"name": "Côte d'Ivoire",
-				"alphaTwo": "CI",
-				"id": "384"
-			},
-			{
-				"name": "Croatia",
-				"alphaTwo": "HR",
-				"id": "191"
-			},
-			{
-				"name": "Cuba",
-				"alphaTwo": "CU",
-				"id": "192"
-			},
-			{
-				"name": "Curaçao",
-				"alphaTwo": "CW",
-				"id": "531"
-			},
-			{
-				"name": "Cyprus",
-				"alphaTwo": "CY",
-				"id": "196"
-			},
-			{
-				"name": "Czech Republic",
-				"alphaTwo": "CZ",
-				"id": "203"
-			},
-			{
-				"name": "Denmark",
-				"alphaTwo": "DK",
-				"id": "208"
-			},
-			{
-				"name": "Djibouti",
-				"alphaTwo": "DJ",
-				"id": "262"
-			},
-			{
-				"name": "Dominica",
-				"alphaTwo": "DM",
-				"id": "212"
-			},
-			{
-				"name": "Dominican Republic",
-				"alphaTwo": "DO",
-				"id": "214"
-			},
-			{
-				"name": "Ecuador",
-				"alphaTwo": "EC",
-				"id": "218"
-			},
-			{
-				"name": "Egypt",
-				"alphaTwo": "EG",
-				"id": "818"
-			},
-			{
-				"name": "El Salvador",
-				"alphaTwo": "SV",
-				"id": "222"
-			},
-			{
-				"name": "Equatorial Guinea",
-				"alphaTwo": "GQ",
-				"id": "226"
-			},
-			{
-				"name": "Eritrea",
-				"alphaTwo": "ER",
-				"id": "232"
-			},
-			{
-				"name": "Estonia",
-				"alphaTwo": "EE",
-				"id": "233"
-			},
-			{
-				"name": "Ethiopia",
-				"alphaTwo": "ET",
-				"id": "231"
-			},
-			{
-				"name": "Falkland Islands (Malvinas)",
-				"alphaTwo": "FK",
-				"id": "238"
-			},
-			{
-				"name": "Faroe Islands",
-				"alphaTwo": "FO",
-				"id": "234"
-			},
-			{
-				"name": "Fiji",
-				"alphaTwo": "FJ",
-				"id": "242"
-			},
-			{
-				"name": "Finland",
-				"alphaTwo": "FI",
-				"id": "246"
-			},
-			{
-				"name": "France",
-				"alphaTwo": "FR",
-				"id": "250"
-			},
-			{
-				"name": "French Guiana",
-				"alphaTwo": "GF",
-				"id": "254"
-			},
-			{
-				"name": "French Polynesia",
-				"alphaTwo": "PF",
-				"id": "258"
-			},
-			{
-				"name": "French Southern Territories",
-				"alphaTwo": "TF",
-				"id": "260"
-			},
-			{
-				"name": "Gabon",
-				"alphaTwo": "GA",
-				"id": "266"
-			},
-			{
-				"name": "Gambia",
-				"alphaTwo": "GM",
-				"id": "270"
-			},
-			{
-				"name": "Georgia",
-				"alphaTwo": "GE",
-				"id": "268"
-			},
-			{
-				"name": "Germany",
-				"alphaTwo": "DE",
-				"id": "276"
-			},
-			{
-				"name": "Ghana",
-				"alphaTwo": "GH",
-				"id": "288"
-			},
-			{
-				"name": "Gibraltar",
-				"alphaTwo": "GI",
-				"id": "292"
-			},
-			{
-				"name": "Greece",
-				"alphaTwo": "GR",
-				"id": "300"
-			},
-			{
-				"name": "Greenland",
-				"alphaTwo": "GL",
-				"id": "304"
-			},
-			{
-				"name": "Grenada",
-				"alphaTwo": "GD",
-				"id": "308"
-			},
-			{
-				"name": "Guadeloupe",
-				"alphaTwo": "GP",
-				"id": "312"
-			},
-			{
-				"name": "Guam",
-				"alphaTwo": "GU",
-				"id": "316"
-			},
-			{
-				"name": "Guatemala",
-				"alphaTwo": "GT",
-				"id": "320"
-			},
-			{
-				"name": "Guernsey",
-				"alphaTwo": "GG",
-				"id": "831"
-			},
-			{
-				"name": "Guinea",
-				"alphaTwo": "GN",
-				"id": "324"
-			},
-			{
-				"name": "Guinea-Bissau",
-				"alphaTwo": "GW",
-				"id": "624"
-			},
-			{
-				"name": "Guyana",
-				"alphaTwo": "GY",
-				"id": "328"
-			},
-			{
-				"name": "Haiti",
-				"alphaTwo": "HT",
-				"id": "332"
-			},
-			{
-				"name": "Heard Island and McDonald Islands",
-				"alphaTwo": "HM",
-				"id": "334"
-			},
-			{
-				"name": "Holy See",
-				"alphaTwo": "VA",
-				"id": "336"
-			},
-			{
-				"name": "Honduras",
-				"alphaTwo": "HN",
-				"id": "340"
-			},
-			{
-				"name": "Hong Kong",
-				"alphaTwo": "HK",
-				"id": "344"
-			},
-			{
-				"name": "Hungary",
-				"alphaTwo": "HU",
-				"id": "348"
-			},
-			{
-				"name": "Iceland",
-				"alphaTwo": "IS",
-				"id": "352"
-			},
-			{
-				"name": "India",
-				"alphaTwo": "IN",
-				"id": "356"
-			},
-			{
-				"name": "Indonesia",
-				"alphaTwo": "ID",
-				"id": "360"
-			},
-			{
-				"name": "Iran (Islamic Republic of)",
-				"alphaTwo": "IR",
-				"id": "364"
-			},
-			{
-				"name": "Iraq",
-				"alphaTwo": "IQ",
-				"id": "368"
-			},
-			{
-				"name": "Ireland",
-				"alphaTwo": "IE",
-				"id": "372"
-			},
-			{
-				"name": "Isle of Man",
-				"alphaTwo": "IM",
-				"id": "833"
-			},
-			{
-				"name": "Israel",
-				"alphaTwo": "IL",
-				"id": "376"
-			},
-			{
-				"name": "Italy",
-				"alphaTwo": "IT",
-				"id": "380"
-			},
-			{
-				"name": "Jamaica",
-				"alphaTwo": "JM",
-				"id": "388"
-			},
-			{
-				"name": "Japan",
-				"alphaTwo": "JP",
-				"id": "392"
-			},
-			{
-				"name": "Jersey",
-				"alphaTwo": "JE",
-				"id": "832"
-			},
-			{
-				"name": "Jordan",
-				"alphaTwo": "JO",
-				"id": "400"
-			},
-			{
-				"name": "Kazakhstan",
-				"alphaTwo": "KZ",
-				"id": "398"
-			},
-			{
-				"name": "Kenya",
-				"alphaTwo": "KE",
-				"id": "404"
-			},
-			{
-				"name": "Kiribati",
-				"alphaTwo": "KI",
-				"id": "296"
-			},
-			{
-				"name": "Korea (Democratic People's Republic of)",
-				"alphaTwo": "KP",
-				"id": "408"
-			},
-			{
-				"name": "Korea (Republic of)",
-				"alphaTwo": "KR",
-				"id": "410"
-			},
-			{
-				"name": "Kuwait",
-				"alphaTwo": "KW",
-				"id": "414"
-			},
-			{
-				"name": "Kyrgyzstan",
-				"alphaTwo": "KG",
-				"id": "417"
-			},
-			{
-				"name": "Lao People's Democratic Republic",
-				"alphaTwo": "LA",
-				"id": "418"
-			},
-			{
-				"name": "Latvia",
-				"alphaTwo": "LV",
-				"id": "428"
-			},
-			{
-				"name": "Lebanon",
-				"alphaTwo": "LB",
-				"id": "422"
-			},
-			{
-				"name": "Lesotho",
-				"alphaTwo": "LS",
-				"id": "426"
-			},
-			{
-				"name": "Liberia",
-				"alphaTwo": "LR",
-				"id": "430"
-			},
-			{
-				"name": "Libya",
-				"alphaTwo": "LY",
-				"id": "434"
-			},
-			{
-				"name": "Liechtenstein",
-				"alphaTwo": "LI",
-				"id": "438"
-			},
-			{
-				"name": "Lithuania",
-				"alphaTwo": "LT",
-				"id": "440"
-			},
-			{
-				"name": "Luxembourg",
-				"alphaTwo": "LU",
-				"id": "442"
-			},
-			{
-				"name": "Macao",
-				"alphaTwo": "MO",
-				"id": "446"
-			},
-			{
-				"name": "Macedonia (the former Yugoslav Republic of)",
-				"alphaTwo": "MK",
-				"id": "807"
-			},
-			{
-				"name": "Madagascar",
-				"alphaTwo": "MG",
-				"id": "450"
-			},
-			{
-				"name": "Malawi",
-				"alphaTwo": "MW",
-				"id": "454"
-			},
-			{
-				"name": "Malaysia",
-				"alphaTwo": "MY",
-				"id": "458"
-			},
-			{
-				"name": "Maldives",
-				"alphaTwo": "MV",
-				"id": "462"
-			},
-			{
-				"name": "Mali",
-				"alphaTwo": "ML",
-				"id": "466"
-			},
-			{
-				"name": "Malta",
-				"alphaTwo": "MT",
-				"id": "470"
-			},
-			{
-				"name": "Marshall Islands",
-				"alphaTwo": "MH",
-				"id": "584"
-			},
-			{
-				"name": "Martinique",
-				"alphaTwo": "MQ",
-				"id": "474"
-			},
-			{
-				"name": "Mauritania",
-				"alphaTwo": "MR",
-				"id": "478"
-			},
-			{
-				"name": "Mauritius",
-				"alphaTwo": "MU",
-				"id": "480"
-			},
-			{
-				"name": "Mayotte",
-				"alphaTwo": "YT",
-				"id": "175"
-			},
-			{
-				"name": "Mexico",
-				"alphaTwo": "MX",
-				"id": "484"
-			},
-			{
-				"name": "Micronesia (Federated States of)",
-				"alphaTwo": "FM",
-				"id": "583"
-			},
-			{
-				"name": "Moldova (Republic of)",
-				"alphaTwo": "MD",
-				"id": "498"
-			},
-			{
-				"name": "Monaco",
-				"alphaTwo": "MC",
-				"id": "492"
-			},
-			{
-				"name": "Mongolia",
-				"alphaTwo": "MN",
-				"id": "496"
-			},
-			{
-				"name": "Montenegro",
-				"alphaTwo": "ME",
-				"id": "499"
-			},
-			{
-				"name": "Montserrat",
-				"alphaTwo": "MS",
-				"id": "500"
-			},
-			{
-				"name": "Morocco",
-				"alphaTwo": "MA",
-				"id": "504"
-			},
-			{
-				"name": "Mozambique",
-				"alphaTwo": "MZ",
-				"id": "508"
-			},
-			{
-				"name": "Myanmar",
-				"alphaTwo": "MM",
-				"id": "104"
-			},
-			{
-				"name": "Namibia",
-				"alphaTwo": "NA",
-				"id": "516"
-			},
-			{
-				"name": "Nauru",
-				"alphaTwo": "NR",
-				"id": "520"
-			},
-			{
-				"name": "Nepal",
-				"alphaTwo": "NP",
-				"id": "524"
-			},
-			{
-				"name": "Netherlands",
-				"alphaTwo": "NL",
-				"id": "528"
-			},
-			{
-				"name": "New Caledonia",
-				"alphaTwo": "NC",
-				"id": "540"
-			},
-			{
-				"name": "New Zealand",
-				"alphaTwo": "NZ",
-				"id": "554"
-			},
-			{
-				"name": "Nicaragua",
-				"alphaTwo": "NI",
-				"id": "558"
-			},
-			{
-				"name": "Niger",
-				"alphaTwo": "NE",
-				"id": "562"
-			},
-			{
-				"name": "Nigeria",
-				"alphaTwo": "NG",
-				"id": "566"
-			},
-			{
-				"name": "Niue",
-				"alphaTwo": "NU",
-				"id": "570"
-			},
-			{
-				"name": "Norfolk Island",
-				"alphaTwo": "NF",
-				"id": "574"
-			},
-			{
-				"name": "Northern Mariana Islands",
-				"alphaTwo": "MP",
-				"id": "580"
-			},
-			{
-				"name": "Norway",
-				"alphaTwo": "NO",
-				"id": "578"
-			},
-			{
-				"name": "Oman",
-				"alphaTwo": "OM",
-				"id": "512"
-			},
-			{
-				"name": "Pakistan",
-				"alphaTwo": "PK",
-				"id": "586"
-			},
-			{
-				"name": "Palau",
-				"alphaTwo": "PW",
-				"id": "585"
-			},
-			{
-				"name": "Palestine, State of",
-				"alphaTwo": "PS",
-				"id": "275"
-			},
-			{
-				"name": "Panama",
-				"alphaTwo": "PA",
-				"id": "591"
-			},
-			{
-				"name": "Papua New Guinea",
-				"alphaTwo": "PG",
-				"id": "598"
-			},
-			{
-				"name": "Paraguay",
-				"alphaTwo": "PY",
-				"id": "600"
-			},
-			{
-				"name": "Peru",
-				"alphaTwo": "PE",
-				"id": "604"
-			},
-			{
-				"name": "Philippines",
-				"alphaTwo": "PH",
-				"id": "608"
-			},
-			{
-				"name": "Pitcairn",
-				"alphaTwo": "PN",
-				"id": "612"
-			},
-			{
-				"name": "Poland",
-				"alphaTwo": "PL",
-				"id": "616"
-			},
-			{
-				"name": "Portugal",
-				"alphaTwo": "PT",
-				"id": "620"
-			},
-			{
-				"name": "Puerto Rico",
-				"alphaTwo": "PR",
-				"id": "630"
-			},
-			{
-				"name": "Qatar",
-				"alphaTwo": "QA",
-				"id": "634"
-			},
-			{
-				"name": "Réunion",
-				"alphaTwo": "RE",
-				"id": "638"
-			},
-			{
-				"name": "Romania",
-				"alphaTwo": "RO",
-				"id": "642"
-			},
-			{
-				"name": "Russian Federation",
-				"alphaTwo": "RU",
-				"id": "643"
-			},
-			{
-				"name": "Rwanda",
-				"alphaTwo": "RW",
-				"id": "646"
-			},
-			{
-				"name": "Saint Barthélemy",
-				"alphaTwo": "BL",
-				"id": "652"
-			},
-			{
-				"name": "Saint Helena, Ascension and Tristan da Cunha",
-				"alphaTwo": "SH",
-				"id": "654"
-			},
-			{
-				"name": "Saint Kitts and Nevis",
-				"alphaTwo": "KN",
-				"id": "659"
-			},
-			{
-				"name": "Saint Lucia",
-				"alphaTwo": "LC",
-				"id": "662"
-			},
-			{
-				"name": "Saint Martin (French part)",
-				"alphaTwo": "MF",
-				"id": "663"
-			},
-			{
-				"name": "Saint Pierre and Miquelon",
-				"alphaTwo": "PM",
-				"id": "666"
-			},
-			{
-				"name": "Saint Vincent and the Grenadines",
-				"alphaTwo": "VC",
-				"id": "670"
-			},
-			{
-				"name": "Samoa",
-				"alphaTwo": "WS",
-				"id": "882"
-			},
-			{
-				"name": "San Marino",
-				"alphaTwo": "SM",
-				"id": "674"
-			},
-			{
-				"name": "Sao Tome and Principe",
-				"alphaTwo": "ST",
-				"id": "678"
-			},
-			{
-				"name": "Saudi Arabia",
-				"alphaTwo": "SA",
-				"id": "682"
-			},
-			{
-				"name": "Senegal",
-				"alphaTwo": "SN",
-				"id": "686"
-			},
-			{
-				"name": "Serbia",
-				"alphaTwo": "RS",
-				"id": "688"
-			},
-			{
-				"name": "Seychelles",
-				"alphaTwo": "SC",
-				"id": "690"
-			},
-			{
-				"name": "Sierra Leone",
-				"alphaTwo": "SL",
-				"id": "694"
-			},
-			{
-				"name": "Singapore",
-				"alphaTwo": "SG",
-				"id": "702"
-			},
-			{
-				"name": "Sint Maarten (Dutch part)",
-				"alphaTwo": "SX",
-				"id": "534"
-			},
-			{
-				"name": "Slovakia",
-				"alphaTwo": "SK",
-				"id": "703"
-			},
-			{
-				"name": "Slovenia",
-				"alphaTwo": "SI",
-				"id": "705"
-			},
-			{
-				"name": "Solomon Islands",
-				"alphaTwo": "SB",
-				"id": "090"
-			},
-			{
-				"name": "Somalia",
-				"alphaTwo": "SO",
-				"id": "706"
-			},
-			{
-				"name": "South Africa",
-				"alphaTwo": "ZA",
-				"id": "710"
-			},
-			{
-				"name": "South Georgia and the South Sandwich Islands",
-				"alphaTwo": "GS",
-				"id": "239"
-			},
-			{
-				"name": "South Sudan",
-				"alphaTwo": "SS",
-				"id": "728"
-			},
-			{
-				"name": "Spain",
-				"alphaTwo": "ES",
-				"id": "724"
-			},
-			{
-				"name": "Sri Lanka",
-				"alphaTwo": "LK",
-				"id": "144"
-			},
-			{
-				"name": "Sudan",
-				"alphaTwo": "SD",
-				"id": "729"
-			},
-			{
-				"name": "Suriname",
-				"alphaTwo": "SR",
-				"id": "740"
-			},
-			{
-				"name": "Svalbard and Jan Mayen",
-				"alphaTwo": "SJ",
-				"id": "744"
-			},
-			{
-				"name": "Swaziland",
-				"alphaTwo": "SZ",
-				"id": "748"
-			},
-			{
-				"name": "Sweden",
-				"alphaTwo": "SE",
-				"id": "752"
-			},
-			{
-				"name": "Switzerland",
-				"alphaTwo": "CH",
-				"id": "756"
-			},
-			{
-				"name": "Syrian Arab Republic",
-				"alphaTwo": "SY",
-				"id": "760"
-			},
-			{
-				"name": "Taiwan, Province of China",
-				"alphaTwo": "TW",
-				"id": "158"
-			},
-			{
-				"name": "Tajikistan",
-				"alphaTwo": "TJ",
-				"id": "762"
-			},
-			{
-				"name": "Tanzania, United Republic of",
-				"alphaTwo": "TZ",
-				"id": "834"
-			},
-			{
-				"name": "Thailand",
-				"alphaTwo": "TH",
-				"id": "764"
-			},
-			{
-				"name": "Timor-Leste",
-				"alphaTwo": "TL",
-				"id": "626"
-			},
-			{
-				"name": "Togo",
-				"alphaTwo": "TG",
-				"id": "768"
-			},
-			{
-				"name": "Tokelau",
-				"alphaTwo": "TK",
-				"id": "772"
-			},
-			{
-				"name": "Tonga",
-				"alphaTwo": "TO",
-				"id": "776"
-			},
-			{
-				"name": "Trinidad and Tobago",
-				"alphaTwo": "TT",
-				"id": "780"
-			},
-			{
-				"name": "Tunisia",
-				"alphaTwo": "TN",
-				"id": "788"
-			},
-			{
-				"name": "Turkey",
-				"alphaTwo": "TR",
-				"id": "792"
-			},
-			{
-				"name": "Turkmenistan",
-				"alphaTwo": "TM",
-				"id": "795"
-			},
-			{
-				"name": "Turks and Caicos Islands",
-				"alphaTwo": "TC",
-				"id": "796"
-			},
-			{
-				"name": "Tuvalu",
-				"alphaTwo": "TV",
-				"id": "798"
-			},
-			{
-				"name": "Uganda",
-				"alphaTwo": "UG",
-				"id": "800"
-			},
-			{
-				"name": "Ukraine",
-				"alphaTwo": "UA",
-				"id": "804"
-			},
-			{
-				"name": "United Arab Emirates",
-				"alphaTwo": "AE",
-				"id": "784"
-			},
-			{
-				"name": "United Kingdom of Great Britain and Northern Ireland",
-				"alphaTwo": "GB",
-				"id": "826"
-			},
-			{
-				"name": "United States of America",
-				"alphaTwo": "US",
-				"id": "840"
-			},
-			{
-				"name": "United States Minor Outlying Islands",
-				"alphaTwo": "UM",
-				"id": "581"
-			},
-			{
-				"name": "Uruguay",
-				"alphaTwo": "UY",
-				"id": "858"
-			},
-			{
-				"name": "Uzbekistan",
-				"alphaTwo": "UZ",
-				"id": "860"
-			},
-			{
-				"name": "Vanuatu",
-				"alphaTwo": "VU",
-				"id": "548"
-			},
-			{
-				"name": "Venezuela (Bolivarian Republic of)",
-				"alphaTwo": "VE",
-				"id": "862"
-			},
-			{
-				"name": "Viet Nam",
-				"alphaTwo": "VN",
-				"id": "704"
-			},
-			{
-				"name": "Virgin Islands (British)",
-				"alphaTwo": "VG",
-				"id": "092"
-			},
-			{
-				"name": "Virgin Islands (U.S.)",
-				"alphaTwo": "VI",
-				"id": "850"
-			},
-			{
-				"name": "Wallis and Futuna",
-				"alphaTwo": "WF",
-				"id": "876"
-			},
-			{
-				"name": "Western Sahara",
-				"alphaTwo": "EH",
-				"id": "732"
-			},
-			{
-				"name": "Yemen",
-				"alphaTwo": "YE",
-				"id": "887"
-			},
-			{
-				"name": "Zambia",
-				"alphaTwo": "ZM",
-				"id": "894"
-			},
-			{
-				"name": "Zimbabwe",
-				"alphaTwo": "ZW",
-				"id": "716"
+			],
+			possibleAnswers: [],
+			score: 0,
+			settings: {
+				numOfAnswers: 4
 			}
-		];
+		};
 	}
 
+	changePicture = function () {
+		this.setState({flags: this.state.flags, possibleAnswers: [], score: this.state.score + 1})
+	}.bind(this);
 
 
 	render() {
-	this.state.currectFlag = this.state.flags.splice(Math.floor(Math.random() * (this.state.flags.length - 1)), 1)[0];
+	const currentFlag = this.state.flags.splice(Math.floor(Math.random() * (this.state.flags.length - 1)), 1)[0];
+	let answers = [];
+		for(let i =0; i< this.state.settings.numOfAnswers-1; i++){
+			let random = Math.floor(Math.random() * (this.state.flags.length - 1));
+			answers.push(this.state.flags[random]);
+		}
+
+		answers.push(currentFlag);
+		console.log(answers);
 		return (
 			<div className="Game container">
-			Main Game Component
-				<Flag link={this.state.currectFlag.alphaTwo.toLowerCase()} dummy={'../../../assets/flags/png/ad.png'}/>
+			<div className="row">
+				<Flag link={currentFlag.alphaTwo.toLowerCase()}/>
+				<Score score={this.state.score}/>
+			</div>
 				<div className="row">
-				<Answers/>
-				<Score/>
+				<Answers options={answers} correctAnswer={currentFlag.id} onCorrectAnswer={this.changePicture}/>
 				</div>
 			</div>
 		);
