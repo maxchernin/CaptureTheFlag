@@ -1249,18 +1249,26 @@ class Game extends Component {
 					"city": "Harare"
 				}
 			],
-			possibleAnswers: [],
 			score: 0,
 			settings: {
-				numOfAnswers: 4
+				numOfAnswers: 4,
+				limit: 3,
+				isGameOver: false
 			}
 		};
 	}
 
-	changePicture = function () {
-		this.setState({flags: this.state.flags, possibleAnswers: [], score: this.state.score + 1})
+	handleCorrectAnswer = function () {
+		this.setState({flags: this.state.flags, score: this.state.score + 1})
 	}.bind(this);
 
+	handleIncorrectAnswer = function () {
+		let handledSettings = _.cloneDeep(this.state.settings);
+		handledSettings.limit -= 1;
+		handledSettings.isGameOver = true;
+		alert('Incorrect Answer');
+		this.setState({flags: this.state.flags, settings: handledSettings});
+	}.bind(this);
 
 	render() {
 	const currentFlag = this.state.flags.splice(Math.floor(Math.random() * (this.state.flags.length - 1)), 1)[0];
@@ -1271,15 +1279,16 @@ class Game extends Component {
 		}
 
 		answers.push(currentFlag);
+		answers = _.shuffle(answers);
 		console.log(answers);
 		return (
 			<div className="Game container">
 			<div className="row">
 				<Flag link={currentFlag.alphaTwo.toLowerCase()}/>
-				<Score score={this.state.score}/>
+				<Score score={this.state.score} retries={this.state.settings.limit}/>
 			</div>
 				<div className="row">
-				<Answers options={answers} correctAnswer={currentFlag.id} onCorrectAnswer={this.changePicture}/>
+				<Answers options={answers} correctAnswer={currentFlag.id} onCorrectAnswer={this.handleCorrectAnswer} onIncorrectAnswer={this.handleIncorrectAnswer} retries={this.state.settings.limit}/>
 				</div>
 			</div>
 		);

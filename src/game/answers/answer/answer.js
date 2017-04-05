@@ -16,7 +16,7 @@ class Answer extends Component {
 
 	render() {
 		return (
-			<div className='Answer'>
+			<div className='Answer col-md-6'>
 				<button
 					type="button"
 					onClick={this.onButtonClick}

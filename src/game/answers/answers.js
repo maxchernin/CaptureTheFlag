@@ -14,7 +14,9 @@ class Answers extends Component {
 				this.props.onCorrectAnswer();
 				//push state up
 		} else {
-			alert('wrong answer');
+			this.props.retries >= 1 ? this.props.onIncorrectAnswer() : alert('Game should end');
+
+
 		}
 
 	}.bind(this);
