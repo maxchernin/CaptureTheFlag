@@ -7,10 +7,12 @@ class Flag extends Component {
 	render() {
 		const parsedLink = 'images/flags/png/' + this.props.link.toLowerCase() + '.png';
 		return (
-			<div className="Flag col-md-8">
+			<div className="Flag">
 				<div className="panel panel-default">
 					<div className="panel-body">
-						<img src={parsedLink} alt="Flag" height={"130px"} />
+						<div className="jumbotron">
+						<img src={parsedLink} alt="Flag" height={"200px"} />
+						</div>
 					</div>
 				</div>
 			</div>

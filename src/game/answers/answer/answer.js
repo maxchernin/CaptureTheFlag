@@ -20,9 +20,7 @@ class Answer extends Component {
 				<button
 					type="button"
 					onClick={this.onButtonClick}
-				        className="btn btn-primary"
-				        data-toggle="dropdown"
-				        aria-haspopup="true"
+				        className="btn btn-primary answer-btn"
 				        aria-expanded="false">
 					{this.props.city}
 			</button>
