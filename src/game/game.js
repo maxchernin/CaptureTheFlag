@@ -6,7 +6,10 @@ import Flag from './flag/flag';
 import Answers from './answers/answers';
 import Score from './score/score';
 import _ from 'lodash';
+import toastr from 'toastr';
 import flagCodes from '../../assets/flagCodes.json'
+import '../../node_modules/toastr/build/toastr.css';
+
 
 var DoneFrame = React.createClass({
 	render: function() {
@@ -22,6 +25,24 @@ var DoneFrame = React.createClass({
 		);
 	}
 });
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "100",
+  "hideDuration": "1000",
+  "timeOut": "1500",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
 
 class Game extends Component {
 	constructor(props) {
@@ -42,15 +63,15 @@ class Game extends Component {
 	}.bind(this);
 
 	handleCorrectAnswer = function () {
+    toastr["success"]("Thats Correct!", "Great Success!");
 		this.setState({flags: this.state.flags, score: this.state.score + 1})
 	}.bind(this);
 
 	handleIncorrectAnswer = function () {
 		let handledSettings = _.cloneDeep(this.state.settings);
 		handledSettings.limit -= 1;
-
+    toastr["success"]("Incorrect", "Total Failure!");
 		handledSettings.limit < 1 && (handledSettings.isGameOver = true);
-		alert('Incorrect Answer');
 		this.setState({flags: this.state.flags, settings: handledSettings});
 	}.bind(this);
 
