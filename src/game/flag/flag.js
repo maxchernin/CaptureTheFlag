@@ -19,4 +19,9 @@ class Flag extends Component {
 		);
 	}
 }
+
+Flag.propTypes = {
+	link: React.PropTypes.string.isRequired
+};
+
 export default Flag;

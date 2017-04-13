@@ -18,12 +18,6 @@
     "city": "Alger"
   },
   {
-    "name": "American Samoa",
-    "alphaTwo": "AS",
-    "id": "016",
-    "city": "Fagatogo"
-  },
-  {
     "name": "Andorra",
     "alphaTwo": "AD",
     "id": "020",
@@ -34,12 +28,6 @@
     "alphaTwo": "AO",
     "id": "024",
     "city": "Luanda"
-  },
-  {
-    "name": "Anguilla",
-    "alphaTwo": "AI",
-    "id": "660",
-    "city": "The Valley"
   },
   {
     "name": "Antigua and Barbuda",
@@ -58,12 +46,6 @@
     "alphaTwo": "AM",
     "id": "051",
     "city": "Yerevan"
-  },
-  {
-    "name": "Aruba",
-    "alphaTwo": "AW",
-    "id": "533",
-    "city": "Oranjestad"
   },
   {
     "name": "Australia",
@@ -130,12 +112,6 @@
     "alphaTwo": "BJ",
     "id": "204",
     "city": "Porto-Novo"
-  },
-  {
-    "name": "Bermuda",
-    "alphaTwo": "BM",
-    "id": "060",
-    "city": "Hamilton"
   },
   {
     "name": "Bhutan",
@@ -228,12 +204,6 @@
     "city": "Peking"
   },
   {
-    "name": "Christmas Island",
-    "alphaTwo": "CX",
-    "id": "162",
-    "city": "Flying Fish Cove"
-  },
-  {
     "name": "Cocos (Keeling) Islands",
     "alphaTwo": "CC",
     "id": "166",
@@ -256,12 +226,6 @@
     "alphaTwo": "CG",
     "id": "178",
     "city": "Brazzaville"
-  },
-  {
-    "name": "Cook Islands",
-    "alphaTwo": "CK",
-    "id": "184",
-    "city": "Avarua"
   },
   {
     "name": "Costa Rica",
@@ -360,12 +324,6 @@
     "city": "Addis Abeba"
   },
   {
-    "name": "Faroe Islands",
-    "alphaTwo": "FO",
-    "id": "234",
-    "city": "Tórshavn"
-  },
-  {
     "name": "Finland",
     "alphaTwo": "FI",
     "id": "246",
@@ -376,12 +334,6 @@
     "alphaTwo": "FR",
     "id": "250",
     "city": "Paris"
-  },
-  {
-    "name": "French Guiana",
-    "alphaTwo": "GF",
-    "id": "254",
-    "city": "Cayenne"
   },
   {
     "name": "French Polynesia",
@@ -420,34 +372,16 @@
     "city": "Accra"
   },
   {
-    "name": "Gibraltar",
-    "alphaTwo": "GI",
-    "id": "292",
-    "city": "Gibraltar"
-  },
-  {
     "name": "Greece",
     "alphaTwo": "GR",
     "id": "300",
-    "city": "Athenai"
-  },
-  {
-    "name": "Greenland",
-    "alphaTwo": "GL",
-    "id": "304",
-    "city": "Nuuk"
+    "city": "Athens"
   },
   {
     "name": "Grenada",
     "alphaTwo": "GD",
     "id": "308",
     "city": "Saint George's"
-  },
-  {
-    "name": "Guadeloupe",
-    "alphaTwo": "GP",
-    "id": "312",
-    "city": "Basse-Terre"
   },
   {
     "name": "Guam",
@@ -490,12 +424,6 @@
     "alphaTwo": "HN",
     "id": "340",
     "city": "Tegucigalpa"
-  },
-  {
-    "name": "Hong Kong",
-    "alphaTwo": "HK",
-    "id": "344",
-    "city": "Victoria"
   },
   {
     "name": "Hungary",
@@ -678,12 +606,6 @@
     "city": "Dalap-Uliga-Darrit"
   },
   {
-    "name": "Martinique",
-    "alphaTwo": "MQ",
-    "id": "474",
-    "city": "Fort-de-France"
-  },
-  {
     "name": "Mauritania",
     "alphaTwo": "MR",
     "id": "478",
@@ -768,12 +690,6 @@
     "city": "Amsterdam"
   },
   {
-    "name": "New Caledonia",
-    "alphaTwo": "NC",
-    "id": "540",
-    "city": "Noum"
-  },
-  {
     "name": "New Zealand",
     "alphaTwo": "NZ",
     "id": "554",
@@ -796,24 +712,6 @@
     "alphaTwo": "NG",
     "id": "566",
     "city": "Abuja"
-  },
-  {
-    "name": "Niue",
-    "alphaTwo": "NU",
-    "id": "570",
-    "city": "Alofi"
-  },
-  {
-    "name": "Norfolk Island",
-    "alphaTwo": "NF",
-    "id": "574",
-    "city": "Kingston"
-  },
-  {
-    "name": "Northern Mariana Islands",
-    "alphaTwo": "MP",
-    "id": "580",
-    "city": "Garapan"
   },
   {
     "name": "Norway",
@@ -870,12 +768,6 @@
     "city": "Manila"
   },
   {
-    "name": "Pitcairn",
-    "alphaTwo": "PN",
-    "id": "612",
-    "city": "Adamstown"
-  },
-  {
     "name": "Poland",
     "alphaTwo": "PL",
     "id": "616",
@@ -930,12 +822,6 @@
     "city": "Castries"
   },
   {
-    "name": "Saint Pierre and Miquelon",
-    "alphaTwo": "PM",
-    "id": "666",
-    "city": "Saint-Pierre"
-  },
-  {
     "name": "Saint Vincent and the Grenadines",
     "alphaTwo": "VC",
     "id": "670",
@@ -952,12 +838,6 @@
     "alphaTwo": "SM",
     "id": "674",
     "city": "San Marino"
-  },
-  {
-    "name": "Sao Tome and Principe",
-    "alphaTwo": "ST",
-    "id": "678",
-    "city": "S"
   },
   {
     "name": "Saudi Arabia",
@@ -1020,12 +900,6 @@
     "city": "Pretoria"
   },
   {
-    "name": "South Sudan",
-    "alphaTwo": "SS",
-    "id": "728",
-    "city": "Juba"
-  },
-  {
     "name": "Spain",
     "alphaTwo": "ES",
     "id": "724",
@@ -1086,12 +960,6 @@
     "city": "Lom"
   },
   {
-    "name": "Tokelau",
-    "alphaTwo": "TK",
-    "id": "772",
-    "city": "Fakaofo"
-  },
-  {
     "name": "Tonga",
     "alphaTwo": "TO",
     "id": "776",
@@ -1120,12 +988,6 @@
     "alphaTwo": "TM",
     "id": "795",
     "city": "Ashgabat"
-  },
-  {
-    "name": "Turks and Caicos Islands",
-    "alphaTwo": "TC",
-    "id": "796",
-    "city": "Cockburn Town"
   },
   {
     "name": "Tuvalu",

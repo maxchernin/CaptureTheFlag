@@ -10,7 +10,6 @@ class Answers extends Component {
 	// }
 	checkAnswer = function (selectedAnswer) {
 		if (parseInt(selectedAnswer) === parseInt(this.props.correctAnswer)) {
-			alert('correct');
 			this.props.onCorrectAnswer();
 			//push state up
 		} else {
