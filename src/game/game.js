@@ -35,14 +35,14 @@ toastr.options = {
   "preventDuplicates": false,
   "onclick": null,
   "showDuration": "100",
-  "hideDuration": "1000",
-  "timeOut": "1500",
+  "hideDuration": "100",
+  "timeOut": "1200",
   "extendedTimeOut": "1000",
   "showEasing": "swing",
   "hideEasing": "linear",
   "showMethod": "fadeIn",
   "hideMethod": "fadeOut"
-}
+};
 
 class Game extends Component {
 	constructor(props) {
@@ -64,15 +64,15 @@ class Game extends Component {
 
 	handleCorrectAnswer = function () {
     toastr["success"]("Thats Correct!", "Great Success!");
-		this.setState({flags: this.state.flags, score: this.state.score + 1})
+		setTimeout(() => this.setState({flags: this.state.flags, score: this.state.score + 1}), 1200);
 	}.bind(this);
 
 	handleIncorrectAnswer = function () {
 		let handledSettings = _.cloneDeep(this.state.settings);
 		handledSettings.limit -= 1;
-    toastr["success"]("Incorrect", "Total Failure!");
+    toastr["error"]("Incorrect", "Total Failure!");
 		handledSettings.limit < 1 && (handledSettings.isGameOver = true);
-		this.setState({flags: this.state.flags, settings: handledSettings});
+		setTimeout(()=>this.setState({flags: this.state.flags, settings: handledSettings}), 1200);
 	}.bind(this);
 
 	resetGame = function () {
