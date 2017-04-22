@@ -7,7 +7,8 @@ import Answers from './answers/answers';
 import Score from './score/score';
 import _ from 'lodash';
 import toastr from 'toastr';
-import flagCodes from '../../assets/flagCodes.json'
+import flagCodes from '../../assets/flagCodes.json';
+import NavBtn from '../shared/navBtn';
 import '../../node_modules/toastr/build/toastr.css';
 
 
@@ -111,6 +112,7 @@ class Game extends Component {
 					<Flag link={currentFlag.alphaTwo.toLowerCase()}/>
 				</div>
 				{gameFrame}
+				<NavBtn linkPath="/" text="Back" />
 			</div>
 		);
 	}

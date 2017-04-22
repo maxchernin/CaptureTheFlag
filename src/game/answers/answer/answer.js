@@ -6,10 +6,10 @@ import React, { Component} from 'react';
 
 class Answer extends Component {
 
-	constructor(props){
-		super(props);
-
-	}
+	// constructor(props){
+	// 	super(props);
+  //
+	// }
 	onButtonClick = function() {
 		this.props.onButtonClick(this.props.id);
 	}.bind(this);
