@@ -6,7 +6,7 @@ class Settings extends Component {
     return (
       <div className="Settings">
         Settings
-        <NavBtn linkPath="/" text="Back"/>
+        <NavBtn icon="" linkPath="/" text="Back"/>
       </div>
     );
   }

@@ -11,9 +11,15 @@ class NavBtn extends Component {
   //   super();
   // }
   render() {
+    let icon = this.props.icon  ? this.props.icon : 'glyphicon-home';
+    let space = ' ';
     return (
         <div className="NavBtn">
-          <Link to={this.props.linkPath}>{this.props.text}</Link>
+          <Link to={this.props.linkPath}>
+            <button className="btn btn-warning">
+              <span className={'glyphicon' + space + icon}></span> {this.props.text}
+              </button>
+          </Link>
           </div>
       );
   }
