@@ -72,7 +72,7 @@ class Game extends Component {
 		let handledSettings = _.cloneDeep(this.state.settings);
 		handledSettings.limit -= 1;
     toastr["error"]("Incorrect", "Total Failure!");
-		handledSettings.limit < 1 && (handledSettings.isGameOver = true);
+		handledSettings.limit < 1 && (handledSettings.isGameOver = true) && this.setState({flags: this.state.flags, settings: handledSettings});
 		setTimeout(()=>this.setState({flags: this.state.flags, settings: handledSettings}), 1200);
 	}.bind(this);
 
@@ -82,17 +82,19 @@ class Game extends Component {
 
 	render() {
 		let gameFrame;
-		const currentFlag = this.state.flags.splice(Math.floor(Math.random() * (this.state.flags.length - 1)), 1)[0];
-		if (this.state.settings.isGameOver) {
+    let flagFrame;
+    if (this.state.settings.isGameOver) {
 			gameFrame = <DoneFrame isGameOver={this.state.settings.isGameOver} score={this.state.score} resetGame={this.resetGame}/>
+			flagFrame = '';
 		} else {
-
+      const currentFlag = this.state.flags.splice(Math.floor(Math.random() * (this.state.flags.length - 1)), 1)[0];
+      flagFrame = <Flag link={currentFlag.alphaTwo.toLowerCase()}/>
 			let answers = [];
 			for (let i = 0; i < this.state.settings.numOfAnswers - 1; i++) {
 				let random = Math.floor(Math.random() * (this.state.flags.length - 1));
 				_.find(answers, (o) => o.id === random) ? answers.push(this.state.flags[random+1]) : answers.push(this.state.flags[random+1]);
 			}
-
+//
 			answers.push(currentFlag);
 			answers = _.shuffle(answers);
 			console.log(answers);
@@ -106,10 +108,13 @@ class Game extends Component {
 		return (
 			<div className="Game container">
 				<div className="row">
+					<NavBtn linkPath="/" text="Back" />
+				</div>
+				<div className="row">
 					<Score score={this.state.score} flagLength={this.state.flags.length} retries={this.state.settings.limit}/>
 				</div>
 				<div className="row">
-					<Flag link={currentFlag.alphaTwo.toLowerCase()}/>
+					{flagFrame}
 				</div>
 				{gameFrame}
 				<NavBtn linkPath="/" text="Back" />
