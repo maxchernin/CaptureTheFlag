@@ -108,7 +108,7 @@ class Game extends Component {
 		return (
 			<div className="Game container">
 				<div className="row">
-					<NavBtn linkPath="/" text="Back" />
+					<NavBtn class="btn-warning" linkPath="/" text="Back" />
 				</div>
 				<div className="row">
 					<Score score={this.state.score} flagLength={this.state.flags.length} retries={this.state.settings.limit}/>
@@ -117,7 +117,7 @@ class Game extends Component {
 					{flagFrame}
 				</div>
 				{gameFrame}
-				<NavBtn linkPath="/" text="Back" />
+				<NavBtn class="btn-warning" linkPath="/" text="Back" />
 			</div>
 		);
 	}

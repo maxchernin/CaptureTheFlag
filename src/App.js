@@ -14,6 +14,7 @@ class App extends Component {
           {/*<img src={logo} className="App-logo" alt="logo" />*/}
           <h2>Insert logo here</h2>
         </div>
+        <div className="well well-lg">...</div>
         {routes}
       </div>
       </Router>

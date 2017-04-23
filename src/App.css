@@ -6,6 +6,26 @@
   /*animation: App-logo-spin infinite 20s linear;*/
   /*height: 80px;*/
 /*}*/
+.fullpage-panel{
+  height: 420px;
+}
+.NavBtn button {
+   /*width: 360px;*/
+   /*height: 200px;*/
+   margin-bottom: 5px;
+ }
+
+.home-btn{
+  width: 360px;
+  height: 200px;
+  margin-bottom: 5px;
+}
+
+.Homepage-navBtn button{
+  width: 360px;
+  height: 200px;
+  margin-bottom: 5px;
+}
 
 .App-header {
   background-color: #222;

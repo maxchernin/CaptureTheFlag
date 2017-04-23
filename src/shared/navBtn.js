@@ -7,16 +7,18 @@ import {Link} from 'react-router-dom';
 
 class NavBtn extends Component {
 
-  // constructor(props) {
-  //   super();
-  // }
+  constructor(props) {
+    super();
+  }
   render() {
-    let icon = this.props.icon  ? this.props.icon : 'glyphicon-home';
+    let icon = this.props.icon  ? this.props.icon : '';
+    let btnClass = this.props.class ? this.props.class : '';
     let space = ' ';
+    let customClass = this.props.customClass ? this.props.customClass : 'NavBtn';
     return (
-        <div className="NavBtn">
+        <div className={customClass}>
           <Link to={this.props.linkPath}>
-            <button className="btn btn-warning">
+            <button className={'btn' + space + btnClass}>
               <span className={'glyphicon' + space + icon}></span> {this.props.text}
               </button>
           </Link>
