@@ -1,19 +1,24 @@
 /**
  * Created by maxcher on 21/04/2017.
  */
-import React from 'react';
-// import Router from 'react-router';
-import {Route} from 'react-router-dom';
-import Game from './game/game';
-import Home from './Home'
-import Settings from './settings/Settings';
+import React from "react";
+import {Route, Switch} from "react-router-dom";
+import Game from "./game/game";
+import Home from "./Home";
+import Settings from "./settings/Settings";
+import NotFound from "./shared/notFound";
 
 let routes = (
-  <div>
-<Route exact path="/" component={Home} />
-<Route path="/game" component={Game} />
-<Route path="/settings" component={Settings} />
-  </div>
+	<div>
+		<Switch>
+			<Route name="home" exact path="/" component={Home}/>
+			<Route name="game" path="/game" component={Game}/>
+			<Route name="settings" path="/settings" component={Settings}/>
+			{/*<Route name="instructions" path="/instructions" component={Instructions} />*/}
+			{/*<Route name="highScore" path="/highScore" component={Highscore} />*/}
+			<Route component={NotFound}/>
+		</Switch>
+	</div>
 );
 
 module.exports = routes;

@@ -5,9 +5,12 @@ import React, { Component } from 'react';
 import Navigation from './shared/navigation';
 
 class Home extends Component {
+
   render() {
+	  console.log(this.props.location)
     return (
         <Navigation/>
+        // <Footer/>
     );
   }
 }
