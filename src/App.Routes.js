@@ -14,7 +14,7 @@ let routes = (
 			<Route name="home" exact path="/" component={Home}/>
 			<Route name="game" path="/game" component={Game}/>
 			<Route name="settings" path="/settings" component={Settings}/>
-			{/*<Route name="instructions" path="/instructions" component={Instructions} />*/}
+			{/*/!*<Route name="instructions" path="/instructions" component={Instructions} />*!/ //@todo Max - */}
 			{/*<Route name="highScore" path="/highScore" component={Highscore} />*/}
 			<Route component={NotFound}/>
 		</Switch>

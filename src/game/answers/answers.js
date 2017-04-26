@@ -5,11 +5,14 @@ import React, {Component} from "react";
 import Answer from "./answer/answer";
 
 class Answers extends Component {
-	// constructor(props){
-	// 	super();
-	// }
+	constructor(props){
+		super();
+		this.state = {
+			base: 10
+		}
+	}
 	checkAnswer = function (selectedAnswer) {
-		if (parseInt(selectedAnswer) === parseInt(this.props.correctAnswer)) {
+		if (parseInt(selectedAnswer, this.state.base) === parseInt(this.props.correctAnswer, this.state.base)) {
 			this.props.onCorrectAnswer();
 			//push state up
 		} else {

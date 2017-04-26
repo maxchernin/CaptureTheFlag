@@ -2,7 +2,6 @@
  * Created by maxcher on 22/04/2017.
  */
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import NavBtn from './navBtn';
 
 class Navigation extends Component {
@@ -17,7 +16,8 @@ class Navigation extends Component {
                   <div className="col-md-6">
                     <NavBtn text="Start New Game"
                             class="home-btn"
-                            linkPath="/game"/>
+                            linkPath="/game"
+                    />
                   </div>
                   <div className="col-md-6">
                     <NavBtn class="home-btn"

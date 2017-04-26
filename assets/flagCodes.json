@@ -378,12 +378,6 @@
     "city": "Paris"
   },
   {
-    "name": "French Guiana",
-    "alphaTwo": "GF",
-    "id": "254",
-    "city": "Cayenne"
-  },
-  {
     "name": "French Polynesia",
     "alphaTwo": "PF",
     "id": "258",
@@ -690,12 +684,6 @@
     "city": "Port-Louis"
   },
   {
-    "name": "Mayotte",
-    "alphaTwo": "YT",
-    "id": "175",
-    "city": "Mamoutzou"
-  },
-  {
     "name": "Mexico",
     "alphaTwo": "MX",
     "id": "484",
@@ -922,12 +910,6 @@
     "alphaTwo": "LC",
     "id": "662",
     "city": "Castries"
-  },
-  {
-    "name": "Saint Pierre and Miquelon",
-    "alphaTwo": "PM",
-    "id": "666",
-    "city": "Saint-Pierre"
   },
   {
     "name": "Saint Vincent and the Grenadines",
@@ -1164,18 +1146,6 @@
     "city": "Port-Vila"
   },
   {
-    "name": "Wallis and Futuna",
-    "alphaTwo": "WF",
-    "id": "876",
-    "city": "Mata-Utu"
-  },
-  {
-    "name": "Western Sahara",
-    "alphaTwo": "EH",
-    "id": "732",
-    "city": "El-Aai"
-  },
-  {
     "name": "Yemen",
     "alphaTwo": "YE",
     "id": "887",
@@ -1194,3 +1164,4 @@
     "city": "Harare"
   }
 ]
+

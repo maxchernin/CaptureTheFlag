@@ -61,7 +61,7 @@ class Game extends Component {
 				isGameOver: false
 			}
 		};
-	}.bind(this);
+	};
 
 	handleCorrectAnswer = function () {
     toastr["success"]("Thats Correct!", "Great Success!");
@@ -78,7 +78,7 @@ class Game extends Component {
 
 	resetGame = function () {
 			this.setState(this.getInitialState());
-	}.bind(this);
+	};
 
 	render() {
 		let gameFrame;
@@ -88,7 +88,8 @@ class Game extends Component {
 			flagFrame = '';
 		} else {
       const currentFlag = this.state.flags.splice(Math.floor(Math.random() * (this.state.flags.length - 1)), 1)[0];
-      flagFrame = <Flag link={currentFlag.alphaTwo.toLowerCase()}/>
+      console.log('The Answer is: ' + currentFlag.city)
+      flagFrame = <Flag link={currentFlag.alphaTwo.toLowerCase()}/>;
 			let answers = [];
 			for (let i = 0; i < this.state.settings.numOfAnswers - 1; i++) {
 				let random = Math.floor(Math.random() * (this.state.flags.length - 1));
@@ -122,5 +123,7 @@ class Game extends Component {
 		);
 	}
 }
+
+
 
 export default Game;
