@@ -29,7 +29,6 @@ CustomInput.propTypes = {
 	type: React.PropTypes.string.isRequired,
 	onChange: React.PropTypes.func.isRequired,
 	placeholder: React.PropTypes.string,
-	value: React.PropTypes.string,
 	error: React.PropTypes.string
 };
 
