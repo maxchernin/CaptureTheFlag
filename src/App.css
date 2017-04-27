@@ -12,8 +12,10 @@
 .NavBtn button {
    /*width: 360px;*/
    /*height: 200px;*/
+  outline: none !important;
    margin-bottom: 15px;
  }
+
 
 .home-btn{
   font-size: 30px;
@@ -21,12 +23,15 @@
   height: 200px;
   margin-bottom: 35px;
   border-radius: 120px;
+  box-shadow: 3px 10px 14px #888888;
+  outline: none !important;
 }
 
 .Homepage-navBtn button{
   width: 350px;
   height: 190px;
   margin-bottom: 52px;
+
 }
 
 .App-header {
