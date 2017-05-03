@@ -29,12 +29,17 @@ class Settings extends Component {
 		return this.setState({settings: this.state.settings});
 	}.bind(this);
 
+	saveChanges = function (event) {
+		event.preventDefault();
+		console.log('//@todo Max - validations + saving settings')
+	};
+
 	render() {
 		return (
 			<div className="Settings">
 				<div className="row">
 					<div className="col-md-6 col-md-offset-3">
-						<SettingsForm settings={this.state.settings} onChange={this.setSettingsState} />
+						<SettingsForm settings={this.state.settings} onChange={this.setSettingsState} onSave={this.saveChanges}/>
 					</div>
 				</div>
 				<NavBtn icon="" linkPath="/" text="Back"/>
