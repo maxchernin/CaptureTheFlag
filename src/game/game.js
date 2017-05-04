@@ -65,15 +65,21 @@ class Game extends Component {
 
 	handleCorrectAnswer = function () {
     toastr["success"]("Thats Correct!", "Great Success!");
-		setTimeout(() => this.setState({flags: this.state.flags, score: this.state.score + 1}), 1200);
+		setTimeout(() => this.setState((prevState, props) => {
+      return {flags: prevState.flags, score: prevState.score + 1};
+    }), 1200);
 	}.bind(this);
 
 	handleIncorrectAnswer = function () {
 		let handledSettings = _.cloneDeep(this.state.settings);
 		handledSettings.limit -= 1;
     toastr["error"]("Incorrect", "Total Failure!");
-		handledSettings.limit < 1 && (handledSettings.isGameOver = true) && this.setState({flags: this.state.flags, settings: handledSettings});
-		setTimeout(()=>this.setState({flags: this.state.flags, settings: handledSettings}), 1200);
+		handledSettings.limit < 1 && (handledSettings.isGameOver = true) && this.setState((prevState, props) => {return {flags: prevState.flags, settings: handledSettings}});
+		setTimeout(()=> this.setState((prevState, props) => {
+			return {
+			flags: this.state.flags, settings: handledSettings
+			}
+		}), 1200);
 	}.bind(this);
 
 	resetGame = function () {

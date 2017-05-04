@@ -9,12 +9,26 @@ class Settings extends Component {
 		this.state = this.getInitialState();
 		this.stateCopy = _.cloneDeep(this.state);
 	}
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location !== this.props.location) {
+
+    }
+  }
+
+  componentWillUnmount(){
+		if(this.state.dirty){
+			return false;
+		} else return true;
+	}
+
 	getInitialState = function () {
 		return {
 			settings: {
 				numOfAnswers: 4,
 				limit: 3
-			}
+			},
+			dirty: true
 		}
 	};
 
@@ -22,11 +36,16 @@ class Settings extends Component {
 		console.log(this.state);
 	};
 
+
 	setSettingsState = function (event) {
 		var field = event.target.name;
 		var value = event.target.type == 'number' ? parseInt(event.target.value, 10) : event.target.value;
 		this.state.settings[field] = value;
-		return this.setState({settings: this.state.settings});
+		return this.setState((prevState, props) => {
+      return {
+        settings: prevState.settings
+      };
+    });
 	}.bind(this);
 
 	saveChanges = function (event) {
