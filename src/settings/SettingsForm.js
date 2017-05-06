@@ -13,8 +13,6 @@ class SettingsForm extends Component {
           <div className="panel-body">
             <form>
               {settings}
-              {/*<CustomInput name="limit" type="number" label="Limit attempts" value={this.props.settings.limit} onChange={this.props.onChange} error="Re-Check your input"/>*/}
-              {/*<CustomInput name="numOfAnswers" type="number" label="Number Of Answers" value={this.props.settings.numOfAnswers} onChange={this.props.onChange} error="Re-Check your input"/>*/}
               <button onClick={this.props.onSave} className='btn btn-default'>
                 <span className='glyphicon'></span> Save Settings
               </button>
