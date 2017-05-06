@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class CustomInput extends Component {
 	render() {
 		let wrapperClass = 'form-group';
-		this.props.error && this.props.error.length > 0 && (wrapperClass.concat(' ', 'has-error'));
+		this.props.error && (wrapperClass = wrapperClass.concat(' ', 'has-error'));
 		return (
 			<div className={wrapperClass}>
 							<label htmlFor={this.props.name}>{this.props.label}</label>
@@ -16,7 +16,7 @@ class CustomInput extends Component {
 							       value={this.props.value}
 							       onChange={this.props.onChange}
 							/>
-					<div className="input">{this.props.error}</div>
+					{this.props.error && <div className="input">{this.props.errorMsg}</div> }
 				</div>
 			</div>
 		);
@@ -29,7 +29,7 @@ CustomInput.propTypes = {
 	type: React.PropTypes.string.isRequired,
 	onChange: React.PropTypes.func.isRequired,
 	placeholder: React.PropTypes.string,
-	error: React.PropTypes.string
+	error: React.PropTypes.bool
 };
 
 export default CustomInput;

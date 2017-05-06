@@ -23,30 +23,88 @@ class Settings extends Component {
 	}
 
 	getInitialState = function () {
-		return {
-			settings: {
-				numOfAnswers: 4,
-				limit: 3
+    return {
+    	errors: {
+    		attempts: false,
+				numOfAnswers: false
 			},
-			dirty: true
-		}
+    	validation: {
+    		attempts: {
+    			min: 1,
+          validationFn: this.checkMin
+				},
+				numOfAnswers: {
+    			min: 1,
+          validationFn: this.checkMin
+				}
+			},
+      settingsInfo: [
+        {
+          name: 'attempts',
+          type: 'number',
+          label: '# of attempts',
+					placeHolder: 'Insert you number',
+					errorMsg: 'Minimum number of attempts: 1',
+					onChange: this.setSettingsState
+        },
+        {
+          name: 'numOfAnswers',
+          type: 'number',
+          label: '# of answers',
+          placeHolder: 'Insert you number',
+          errorMsg: 'Please insert a valid number',
+          onChange: this.setSettingsState
+        }
+      ],
+			settings: {
+      	attempts: 3,
+				numOfAnswers: 4
+			},
+      dirty: true
+    };
 	};
 
 	componentDidMount = function () {
 		console.log(this.state);
 	};
 
+	checkMin(field, inputMin){
+    return inputMin < this.state.validation[field].min ? false : true;
+	}
 
-	setSettingsState = function (event) {
+	setSettingsState = function(event) {
 		var field = event.target.name;
-		var value = event.target.type == 'number' ? parseInt(event.target.value, 10) : event.target.value;
-		this.state.settings[field] = value;
+		let type = event.target.type;
+		var value = event.target.value;
+
+		let settingsCopy = _.cloneDeep(this.state.settings);
+		let errorsCopy = _.cloneDeep(this.state.errors);
+
+    let isValid;
+    switch (type) {
+        case 'number':
+          isValid =	this.state.validation[field] && this.state.validation[field].validationFn && this.state.validation[field].validationFn.call(this, field, event.target.valueAsNumber);
+          value = event.target.valueAsNumber;
+            errorsCopy[field] = isValid ? false : true;
+          break;
+      }
+		settingsCopy[field] = value; //@todo Max - bad state mutation
+
 		return this.setState((prevState, props) => {
       return {
-        settings: prevState.settings
-      };
+        settings: settingsCopy,
+				errors: errorsCopy
+      }
     });
 	}.bind(this);
+
+  displayPopup(){
+  	this.setState((prev, props)=>{
+  		return {
+  			dirty: true
+			}
+		})
+	}
 
 	saveChanges = function (event) {
 		event.preventDefault();
@@ -54,11 +112,12 @@ class Settings extends Component {
 	};
 
 	render() {
+
 		return (
 			<div className="Settings">
 				<div className="row">
 					<div className="col-md-6 col-md-offset-3">
-						<SettingsForm settings={this.state.settings} onChange={this.setSettingsState} onSave={this.saveChanges}/>
+						<SettingsForm settings={this.state.settings} settingsInfo={this.state.settingsInfo} onChange={this.setSettingsState} onSave={this.saveChanges} errors={this.state.errors}/>
 					</div>
 				</div>
 				<NavBtn icon="" linkPath="/" text="Back"/>
@@ -66,5 +125,6 @@ class Settings extends Component {
 		);
 	}
 }
+
 
 export default Settings;
