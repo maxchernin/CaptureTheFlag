@@ -10,9 +10,9 @@ class Answer extends Component {
 	// 	super(props);
   //
 	// }
-	onButtonClick = function() {
+	onButtonClick() {
 		this.props.onButtonClick(this.props.id);
-	}.bind(this);
+	};
 
 	render() {
 		return (

@@ -22,7 +22,7 @@ class Settings extends Component {
 		} else return true;
 	}
 
-	getInitialState = function () {
+	getInitialState() {
     return {
     	errors: {
     		attempts: false,
@@ -64,7 +64,7 @@ class Settings extends Component {
     };
 	};
 
-	componentDidMount = function () {
+	componentDidMount() {
 		console.log(this.state);
 	};
 
@@ -72,7 +72,7 @@ class Settings extends Component {
     return inputMin < this.state.validation[field].min ? false : true;
 	}
 
-	setSettingsState = function(event) {
+	setSettingsState(event) {
 		var field = event.target.name;
 		let type = event.target.type;
 		var value = event.target.value;
@@ -96,7 +96,7 @@ class Settings extends Component {
 				errors: errorsCopy
       }
     });
-	}.bind(this);
+	};
 
   displayPopup(){
   	this.setState((prev, props)=>{
@@ -106,7 +106,7 @@ class Settings extends Component {
 		})
 	}
 
-	saveChanges = function (event) {
+	saveChanges(event) {
 		event.preventDefault();
 		console.log('//@todo Max - validations + saving settings')
 	};

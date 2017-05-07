@@ -19,4 +19,4 @@ class Flag extends Component {
 		);
 	}
 }
-export default Flag;
+export default Flag; //@todo Max - move to function component

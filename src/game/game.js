@@ -51,7 +51,7 @@ class Game extends Component {
 		this.state = this.getInitialState();
 	}
 
-	getInitialState = function () {
+	getInitialState() {
 		return {
 			flags: flagCodes,
 			score: 0,
@@ -63,14 +63,14 @@ class Game extends Component {
 		};
 	};
 
-	handleCorrectAnswer = function () {
+	handleCorrectAnswer() {
     toastr["success"]("Thats Correct!", "Great Success!");
 		setTimeout(() => this.setState((prevState, props) => {
       return {flags: prevState.flags, score: prevState.score + 1};
     }), 1200);
-	}.bind(this);
+	};
 
-	handleIncorrectAnswer = function () {
+	handleIncorrectAnswer() {
 		let handledSettings = _.cloneDeep(this.state.settings);
 		handledSettings.limit -= 1;
     toastr["error"]("Incorrect", "Total Failure!");
@@ -80,9 +80,9 @@ class Game extends Component {
 			flags: this.state.flags, settings: handledSettings
 			}
 		}), 1200);
-	}.bind(this);
+	};
 
-	resetGame = function () {
+	resetGame() {
 			this.setState(this.getInitialState());
 	};
 
