@@ -1,0 +1,26 @@
+[
+  {
+    "position": 1,
+    "text": "Start New Game",
+    "style": "home-btn",
+    "link": "/game"
+  },
+  {
+    "position": 2,
+    "text": "Instructions",
+    "style": "home-btn",
+    "link": "/instructions"
+  },
+  {
+    "position": 3,
+    "text": "Settings",
+    "style": "home-btn",
+    "link": "/settings"
+  },
+  {
+    "position": 4,
+    "text": "High Score",
+    "style": "home-btn",
+    "link": "/highScore"
+  }
+]

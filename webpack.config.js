@@ -24,15 +24,11 @@ module.exports = {
 	},
 	devtool: 'source-map',
 	devServer: {
-		// hot: true, //@todo Max -
-		// enable HMR on the server
 		historyApiFallback: true,
 		contentBase: path.resolve(__dirname, './'),
-		// match the output path
 		compress: true,
 		port: 4200,
-		publicPath: '/'
-		// match the output `publicPath`
+		publicPath: path.resolve(__dirname, 'public')
 	},
 	module: {
 		rules: [

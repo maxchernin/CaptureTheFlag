@@ -1,6 +1,7 @@
 /**
  * Created by maxcher on 22/04/2017.
  */
+import navigation from './navigation.json';
 import React, {Component} from 'react';
 import NavBtn from './navBtn';
 
