@@ -6,6 +6,7 @@ import {Provider} from 'react-redux';
 import './index.css';
 
 const store = configureStore();
+// store.dispatch(load)
 
 ReactDOM.render(
 	<Provider store={store}>

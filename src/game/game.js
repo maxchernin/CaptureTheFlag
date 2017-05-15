@@ -88,7 +88,8 @@ class Game extends Component {
 
 	render() {
 		let gameFrame;
-    let flagFrame;
+        let flagFrame;
+
     if (this.state.settings.isGameOver) {
 			gameFrame = <DoneFrame isGameOver={this.state.settings.isGameOver} score={this.state.score} resetGame={this.resetGame}/>
 			flagFrame = '';
