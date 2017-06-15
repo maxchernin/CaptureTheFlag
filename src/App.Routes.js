@@ -21,4 +21,4 @@ let routes = (
 	</div>
 );
 
-module.exports = routes;
+export default routes;

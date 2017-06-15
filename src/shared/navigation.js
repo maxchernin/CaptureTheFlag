@@ -4,8 +4,11 @@
 import navigation from './navigation.json';
 import React, {Component} from 'react';
 import NavBtn from './navBtn';
+import _ from 'lodash';
 
 class Navigation extends Component {
+
+
   render() {
     return (
       <div className="Navigation">
@@ -19,6 +22,9 @@ class Navigation extends Component {
                             class="home-btn"
                             linkPath="/game"
                     />
+                      {_.map(navigation, (item, key)=>{
+                        console.log(key);
+                      })}
                   </div>
                   <div className="col-md-6">
                     <NavBtn class="home-btn"

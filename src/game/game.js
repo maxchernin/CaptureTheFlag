@@ -7,13 +7,12 @@ import Answers from './answers/answers';
 import Score from './score/score';
 import _ from 'lodash';
 import toastr from 'toastr';
-import flagCodes from '../../assets/flagCodes.json';
+import flagCodes from '../assets/flagCodes.json';
 import NavBtn from '../shared/navBtn';
 import '../../node_modules/toastr/build/toastr.css';
 
 
-var DoneFrame = React.createClass({
-	render: function() {
+var DoneFrame = function() {
 		return (
 			<div className="well text-center">
 				<h2>Game Over :(</h2>
@@ -24,8 +23,7 @@ var DoneFrame = React.createClass({
 				</button>
 			</div>
 		);
-	}
-});
+	}.bind(this);
 
 toastr.options = {
   "closeButton": true,
@@ -51,7 +49,7 @@ class Game extends Component {
 		this.state = this.getInitialState();
 	}
 
-	getInitialState() {
+	getInitialState = () => {
 		return {
 			flags: flagCodes,
 			score: 0,
@@ -63,14 +61,14 @@ class Game extends Component {
 		};
 	};
 
-	handleCorrectAnswer() {
+	handleCorrectAnswer = () => {
     toastr["success"]("Thats Correct!", "Great Success!");
 		setTimeout(() => this.setState((prevState, props) => {
       return {flags: prevState.flags, score: prevState.score + 1};
     }), 1200);
 	};
 
-	handleIncorrectAnswer() {
+	handleIncorrectAnswer= () => {
 		let handledSettings = _.cloneDeep(this.state.settings);
 		handledSettings.limit -= 1;
     toastr["error"]("Incorrect", "Total Failure!");
@@ -82,11 +80,11 @@ class Game extends Component {
 		}), 1200);
 	};
 
-	resetGame() {
+	resetGame = () => {
 			this.setState(this.getInitialState());
 	};
 
-	render() {
+	render = () => {
 		let gameFrame;
         let flagFrame;
 

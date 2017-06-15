@@ -11,7 +11,7 @@ class Answers extends Component {
 			base: 10
 		}
 	}
-	checkAnswer(selectedAnswer) {
+	checkAnswer = (selectedAnswer) =>{
 		if (parseInt(selectedAnswer, this.state.base) === parseInt(this.props.correctAnswer, this.state.base)) {
 			this.props.onCorrectAnswer();
 			//push state up

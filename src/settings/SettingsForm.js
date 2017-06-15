@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CustomInput from '../shared/CustomInput';
+import PropTypes from 'prop-types';
 
 class SettingsForm extends Component {
 
@@ -24,9 +25,9 @@ class SettingsForm extends Component {
   }
 }
 SettingsForm.propTypes = {
-	onChange: React.PropTypes.func.isRequired,
-	settings: React.PropTypes.object.isRequired,
-	onSave: React.PropTypes.func.isRequired
+	onChange: PropTypes.func.isRequired,
+	settings: PropTypes.object.isRequired,
+	onSave: PropTypes.func.isRequired
 };
 
 export default SettingsForm;

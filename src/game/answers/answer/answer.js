@@ -8,9 +8,9 @@ class Answer extends Component {
 
 	// constructor(props){
 	// 	super(props);
-  //
 	// }
-	onButtonClick() {
+
+	onButtonClick = () => {
 		this.props.onButtonClick(this.props.id);
 	};
 

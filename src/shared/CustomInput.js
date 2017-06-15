@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class CustomInput extends Component {
 	render() {
@@ -24,12 +25,12 @@ class CustomInput extends Component {
 }
 
 CustomInput.propTypes = {
-	name: React.PropTypes.string.isRequired,
-	label: React.PropTypes.string.isRequired,
-	type: React.PropTypes.string.isRequired,
-	onChange: React.PropTypes.func.isRequired,
-	placeholder: React.PropTypes.string,
-	error: React.PropTypes.bool
+	name: PropTypes.string.isRequired,
+	label: PropTypes.string.isRequired,
+	type: PropTypes.string.isRequired,
+	onChange: PropTypes.func.isRequired,
+	placeholder: PropTypes.string,
+	error: PropTypes.bool
 };
 
 export default CustomInput;
