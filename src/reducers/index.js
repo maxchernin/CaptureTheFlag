@@ -2,10 +2,10 @@
  * Created by maxim.chernin on 14/5/17.
  */
 import {combineReducers} from 'redux';
-// import nodes from './reducers';
+import settingsReducer from './settingsReducer';
 
 const rootReducer = combineReducers({
-	// nodes
+	settingsReducer
 });
 
 export default rootReducer;
