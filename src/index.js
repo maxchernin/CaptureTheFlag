@@ -4,7 +4,7 @@ import App from './App';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import * as firebase from 'firebase';
-import './index.css';
+import './index.scss';
 
 const store = configureStore();
 // store.dispatch(load)

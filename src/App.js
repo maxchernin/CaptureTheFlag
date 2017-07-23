@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import routes from './App.Routes';
 // import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   render() {
