@@ -68,7 +68,7 @@ class Game extends Component {
     }), 1200);
 	};
 
-	handleIncorrectAnswer= () => {
+	handleIncorrectAnswer = () => {
 		let handledSettings = _.cloneDeep(this.state.settings);
 		handledSettings.limit -= 1;
     toastr["error"]("Incorrect", "Total Failure!");

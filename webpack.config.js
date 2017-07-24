@@ -24,10 +24,8 @@ module.exports = {
 	},
 	devtool: 'source-map',
 	devServer: {
-		historyApiFallback: true,
 		contentBase: path.resolve(__dirname, './'),
-		compress: true,
-		port: 4200,
+		port: 3000,
 		publicPath: path.resolve(__dirname, 'public')
 	},
 	module: {
@@ -36,11 +34,7 @@ module.exports = {
 				test: /\.js$/,
 				use: [
 					{
-						loader: 'babel-loader',
-						options: {
-							presets: [['es2015', {modules: false}]],
-							plugins: ['syntax-dynamic-import']
-						}
+						loader: 'babel-loader'
 					}
 				],
 				exclude: /node_modules/
@@ -84,7 +78,7 @@ module.exports = {
 				return module.context && module.context.indexOf('node_modules') !== -1;
 			}
 		}),
-		new OpenBrowserPlugin({ url: 'http://localhost:4200' }),
+		new OpenBrowserPlugin({ url: 'http://localhost:3000' }),
 		// new webpack.HotModuleReplacementPlugin(),
 		// enable HMR globally
 		// new webpack.NamedModulesPlugin(),
